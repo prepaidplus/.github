@@ -76,60 +76,64 @@ Contact the PrepaidPlus Support Department to request API access. When access is
 Note: Semicolon between apiKey and password is important.
 <div style="display: flex; gap: 10px;">
 
-  <a href="/documentation/waterUtilities.md" style="text-decoration: none;">
-    <button style="
-      padding: 10px 20px; 
-      font-size: 16px; 
-      color: white; 
-      background-color: #007bff; 
-      border: none; 
-      border-radius: 10px; 
-      cursor: pointer;
-    ">
-      WATER
-    </button>
-  </a>
+<a href="/documentation/waterUtilities.md" style="text-decoration: none;">
+  <button style="
+    padding: 10px 20px; 
+    font-size: 16px; 
+    color: white; 
+    background-color: #007bff; 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer;
+  ">
+    WATER
+  </button>
+</a>
 
-  <a href="/documentation/electricity.md" style="text-decoration: none;">
-    <button style="
-      padding: 10px 20px; 
-      font-size: 16px; 
-      color: white; 
-      background-color: #007bff; 
-      border: none; 
-      border-radius: 10px; 
-      cursor: pointer;
-    ">
-      ELECTRICITY
-    </button>
-  </a>
+<br>
 
-  <a href="/documentation/multichoice.md" style="text-decoration: none;">
-    <button style="
-      padding: 10px 20px; 
-      font-size: 16px; 
-      color: white; 
-      background-color: #007bff; 
-      border: none; 
-      border-radius: 10px; 
-      cursor: pointer;
-    ">
-      MULTICHOICE
-    </button>
-  </a>
+<a href="/documentation/electricity.md" style="text-decoration: none;">
+  <button style="
+    padding: 10px 20px; 
+    font-size: 16px; 
+    color: white; 
+    background-color: #007bff; 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer;
+  ">
+    ELECTRICITY
+  </button>
+</a>
 
-  <a href="/documentation/airtime.md" style="text-decoration: none;">
-    <button style="
-      padding: 10px 20px; 
-      font-size: 16px; 
-      color: white; 
-      background-color: #007bff; 
-      border: none; 
-      border-radius: 10px; 
-      cursor: pointer;
-    ">
-      AIRTIME
-    </button>
-  </a>
+<br>
 
-</div>
+<a href="/documentation/multichoice.md" style="text-decoration: none;">
+  <button style="
+    padding: 10px 20px; 
+    font-size: 16px; 
+    color: white; 
+    background-color: #007bff; 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer;
+  ">
+    MULTICHOICE
+  </button>
+</a>
+
+<br>
+
+<a href="/documentation/airtime.md" style="text-decoration: none;">
+  <button style="
+    padding: 10px 20px; 
+    font-size: 16px; 
+    color: white; 
+    background-color: #007bff; 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer;
+  ">
+    AIRTIME
+  </button>
+</a>
