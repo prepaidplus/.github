@@ -1,46 +1,62 @@
-## Overview of API Documentation
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .logo {
+            display: block;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px 0;
+            background: #063970;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .button:hover {
+            background: #052a5e;
+            transform: scale(1.05);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2, h3 {
+            color: #063970;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
 
-This document provides detailed instructions and information on how to use the PrepaidPlus Web Services (PWS). It includes sections on getting started, use cases, workflows, and more.
-
-### Navigation
- [Getting Started](#getting-started)
-  - [How to Begin](#how-to-begin)
-    - [Obtain PrepaidPlus API Access](#obtain-prepaidplus-api-access)
-- [PWS Prepaid Electricity Use Cases and Workflows](#pws-prepaid-electricity-use-cases-and-workflows)
-  - [Use Case Actors, Responsibilities and Collaborators](#use-case-actors-responsibilities-and-collaborators)
-  - [Trial Credit Vend Use Case](#trial-credit-vend-use-case)
-  - [Credit Vend Happy Path](#credit-vend-happy-path)
-  - [Last Response Use Case](#last-response-use-case)
-- [PWS MultiChoice DSTV Use Cases and Workflows](#pws-multichoice-dstv-use-cases-and-workflows)
-  - [Multichoice DSTV Smartcard Confirmation Use Case](#multichoice-dstv-smartcard-confirmation-use-case)
-
-
-## Getting Started
-
-The following are instructions for what you should do to begin using PrepaidPlus Web Services.
-
-PWS authenticates your API requests using your account’s API key and password. If you do not include your key when making an API request, or use one that is incorrect or outdated, PWS returns an error. Every account is provided with separate keys for testing and for running live transactions. All API requests exist in either development or production environment, and objects—keys in one environment cannot be manipulated by objects in the other.
-
-Production API keys should be kept confidential and only stored on your own servers. Your account’s secret API key can perform any API request to PWS without restriction.
-
-### How to Begin
-
-#### Obtain PrepaidPlus API Access
-
-Contact the PrepaidPlus Support Department to request API access. When access is granted, you will receive an API namespace, an API key and password. These are the pieces of information required for API access. The API key and password should be Base64 Encoded in an auth object as shown in Table 2.2 below. The resulting Base64 string should be sent in the Authorization header of every request.
-
-| API Point  | API Key            | Service information (generic domain)       |
-|------------|--------------------|--------------------------------------------|
-| Development| GzVAeL9yDudeaNUZFITz | https://tps.prepaidplus.co.bw/             |
-| Production | TBA                |                                            |
-
-| Type       | Value              |
-|------------|--------------------|
-| ApiKey     | GzVAeL9yDudeaNUZFITz | Base64Encode(api_key:password) i.e Base64Encode(GzVAeL9yDudeaNUZFITz:Yjd83&j$%d) |
-| Password   | Yjd83&j$%d         |
-| Base64     | R3pWQWVMOXlEdWRlYU5VWkZJVHo6WWpkODMmaiQlZA== |
-
-Note: Semicolon between apiKey and password is important
+<img src="../documentation/Prepaidplus%20logo-01.png" alt="PrepaidPlus Logo" width="150" class="logo"/>
 
 ## PWS Prepaid Electricity Use Cases and Workflows
 
@@ -165,3 +181,193 @@ The workflow for the Last Response process is as presented below in Table 3.4.
 The Last Response use case sequence diagram is illustrated in figure 3.3 below.
 
 ![Last Response Happy Path](../documentation/last%20resort%20%20happy%20path.png)
+
+### Table 6.6: CustVendDetail
+
+This is the customer details as supplied by the prepaid electricity service provider: Name, address and contact number.
+
+| Argument     | Type   | Description                                      |
+|--------------|--------|--------------------------------------------------|
+| name         | string | Mandatory: Name of Meter owner.                  |
+| meterNumber  | string | Mandatory: This is the customer meter number.    |
+| amtTendered  | int    | Mandatory: This is the purchase amount. (Minimum P1, and Maximum P5,000) These limits can be adjusted to the merchant’s requirements. |
+
+### TrialCreditVend Examples
+
+The example request and response demonstrate a TrialCreditVend Request call and response.
+
+#### Example Request
+
+This example uses the following fields and values:
+
+```javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Basic base64string");
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+    "meterNumber": "04040404040",
+    "transactionAmount": 10,
+    "terminalId": "Web",
+    "clientSaleId": "1639124683",
+    "outletId": "4958-01",
+    "operatorId": "finclude-01"
+});
+
+var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+};
+
+fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialvend", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
+    #### Example Response
+
+    {
+    "code": "0",
+    "custVendDetail": {
+        "name": "GODD-INVESTMENTS (PTY) LTD",
+        "meterNumber": "04040404040",
+        "amtTendered": "10"
+    },
+    "clientSaleId": "4958-01",
+    "transactionAmount": "10",
+    "response": "Successful"
+}
+
+
+ #### Example Fault
+ {
+    "code": "103",
+    "response": "Failure",
+    "message": "OutletId is missing",
+    "description": "OutletId is not provided",
+    "transactionId": null,
+    "meterNumber": "04040404040",
+    "amount": 10,
+    "status": 500
+}
+
+
+ 7.1.2 CreditVend Request
+
+The CreditVend request carries out the actual purchase based on the positive outcome of the TrialCreditVend or when used as a stand-alone. The method returns a prepaid electricity voucher.
+
+### Send a CreditVend Request
+
+Send a CreditVend request to one of the following endpoints:
+- **Production:** Will be advised once testing and integration on development server completed
+- **Sandbox:** https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/creditvend
+
+The CreditVend Request requires the following fields:
+
+| Argument         | Type   | Description                                                                                                      |
+|------------------|--------|------------------------------------------------------------------------------------------------------------------|
+| apiKey           | string | **Mandatory:** Secret APIKey authenticates the merchant. Passed in authorization header (Base 64 encoded) as part of Basic Authentication scheme. |
+| password         | string | **Mandatory:** Merchant password. Passed in authorization header as part of Basic Authentication scheme.         |
+| terminalId       | string | **Optional:** This is the unique Identifier of sale channel making the purchase                                   |
+| clientSaleId     | string | **Mandatory:** This is the POS sale/transaction Id that uniquely identifies sale.                                 |
+| meterNumber      | string | **Mandatory:** This is the customer meter number.                                                                |
+| transactionAmount| int    | **Mandatory:** This is the purchase amount. Supplied by Cashier/Operator (Minimum P1)                             |
+| outletId         | string | **Mandatory:** This is the unique Identifier of store or sale channel the purchase is being made from            |
+| operatorId       | string | **Mandatory:** This is a unique Identifier of person carrying out customer request                               |
+
+### Making the CreditVend Request
+
+The CreditVendRequest call is successful when you receive a response that has the customer’s prepaid electricity voucher. If the call fails, you will receive one of the following errors:
+
+| Error No | Short Message               | Description                                                                                       |
+|----------|-----------------------------|---------------------------------------------------------------------------------------------------|
+| 01       | API key missing             | API Key not provided.                                                                             |
+| 02       | Invalid API key             | Unable to authenticate supplied API key.                                                          |
+| 03       | Invalid API Password        | Unable to authenticate supplied password.                                                         |
+| 04       | Disabled API key            | The provided API Key is disabled                                                                  |
+| 06       | Unexpected Error            | An unexpected exception has occurred.                                                             |
+| 11       | Authorisation failed        | Authorisation Header is not provided                                                              |
+| 102      | clientSaleId missing        | Missing a mandatory field - provider                                                              |
+| 103      | outletId missing            | Missing a mandatory field - provider                                                              |
+| 104      | Terminal Id missing         | Terminal Id is not provided.                                                                      |
+| 105      | operatorId missing          | Missing a mandatory field - provider                                                              |
+| 106      | meterNumber missing         | Meter number is not provided.                                                                     |
+| 107      | transactionAmount missing   | Transaction purchase amount is not provided.                                                      |
+| 202      | Insufficient Balance        | Merchant balance is less than sale amount.                                                        |
+| 203      | Vendor Error                | Pass-on Business Error returned by Vendor. Description in the details field. (Vendors: BPC, Mascom, Orange – Etc) |
+| 204      | Disabled Outlet             | The provided OutletId is currently disabled.                                                      |
+| 205      | Invalid Outlet Id           | The provided OutletId was not found.                                                              |
+| 206      | MinimumMaximum amount error | Amount requested is either less or more than the allowed amount.                                   |
+
+The errors above are faults, which are fatal, call-level errors. When a fault occurs, nothing is processed because the entire call was invalid. Often the problem is that the API key was incorrect or there was a server error.
+
+### CreditVend Response Parameters
+
+| Argument           | Type    | Description                                                                                       |
+|--------------------|---------|---------------------------------------------------------------------------------------------------|
+| code               | string  | **Mandatory:** Response code indicating the outcome of the transaction, whether successful or failed. |
+| meterNumber        | string  | **Mandatory:** This is the customer meter number.                                                 |
+| transactionAmount  | int     | **Mandatory:** This is the purchase amount.                                                       |
+| response           | element | **Mandatory:** This is response of from sale, whether successful of failed                        |
+| transactionId      | string  | **Mandatory:** This is the PrepaidPlus transaction ID that uniquely identifies sale.              |
+| creditVendReceipt  | element | **Mandatory:** This is the service providers (Botswana Power Corporation – BPC) receipt details for the transaction. |
+| clientSaleId       | string  | **Mandatory:** This is the Merchant POS sale/transaction Id that uniquely identifies transaction. Supplied by Merchant. |
+
+### Table 6.10: Credit Vend Receipt
+
+| Argument         | Type    | Description                                                                                       |
+|------------------|---------|---------------------------------------------------------------------------------------------------|
+| receiptNo        | string  | **Mandatory:** Attribute: This is the BPC receipt number.                                         |
+| msno             | string  | **Mandatory:** This is the customer meter number.                                                 |
+| vatNo            | string  | **Mandatory:** BPC – VAT Number                                                                   |
+| tt               | string  | **Mandatory:** BPC - Token technology                                                             |
+| at               | string  | **Mandatory:** BPC – Algorithm Type                                                               |
+| sgc              | string  | **Mandatory:** BPC – Supply group code                                                            |
+| krn              | string  | **Mandatory:** BPC - Key revision number.                                                         |
+| ti               | string  | **Mandatory:** BPC - Tariff Index                                                                 |
+| desc             | string  | **Mandatory:** BPC – Transaction description.                                                     |
+| tokenUnits       | float   | **Mandatory:** BPC – Total units purchased                                                        |
+| amtTendered      | float   | **Mandatory:** BPC – Amount tendered to purchase token                                            |
+| costUnits        | float   | **Mandatory:** BPC – Cost of units. (Tendered amount – units)                                     |
+| govLevy          | float   | **Mandatory:** BPC – Tax - Government Levy (retained)                                             |
+| standardCharge   | float   | **Mandatory:** BPC – Tax – Standard charge (retained)                                             |
+| VAT              | float   | **Mandatory:** BPC – VAT retained                                                                 |
+| stsCipher        | string  | **Mandatory:** BPC – Customer recharge token                                                      |
+| keychangetoken1  |         | **Optional:** BPC – Key change token which must be provided to the customer if a value is returned and should always be displayed above keychangetoken2 and stsCipher |
+| keychangetoken2  |         | **Optional:** BPC – Key change token which must be provided to the customer if a value is returned and should always be displayed above stsCipher and below keychangetoken1 |
+
+### CreditVend Request Examples
+
+The example request and response demonstrate a CreditVend Request call and response.
+
+#### Example Request
+
+This example uses the following fields and values:
+
+```javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Basic base64string");
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+    "meterNumber": "04040404040",
+    "transactionAmount": 10,
+    "terminalId": "Web",
+    "clientSaleId": "16949595959",
+    "outletId": "4958-01",
+    "operatorId": "finclude-01",
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/creditvend", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
