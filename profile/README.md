@@ -74,44 +74,62 @@ Contact the PrepaidPlus Support Department to request API access. When access is
 | Base64     | [Your Base64 String]|                                                                 |
 
 Note: Semicolon between apiKey and password is important.
+<div style="display: flex; gap: 10px;">
 
-## INTRODUCTION TO SERVICES 
+  <a href="/documentation/waterUtilities.md" style="text-decoration: none;">
+    <button style="
+      padding: 10px 20px; 
+      font-size: 16px; 
+      color: white; 
+      background-color: #007bff; 
+      border: none; 
+      border-radius: 10px; 
+      cursor: pointer;
+    ">
+      WATER
+    </button>
+  </a>
 
-Welcome to PrepaidPlus! Below are the services we provide, which can be accessed and integrated with your applications.
+  <a href="/documentation/electricity.md" style="text-decoration: none;">
+    <button style="
+      padding: 10px 20px; 
+      font-size: 16px; 
+      color: white; 
+      background-color: #007bff; 
+      border: none; 
+      border-radius: 10px; 
+      cursor: pointer;
+    ">
+      ELECTRICITY
+    </button>
+  </a>
 
-### Water Utilities Cooperation 
+  <a href="/documentation/multichoice.md" style="text-decoration: none;">
+    <button style="
+      padding: 10px 20px; 
+      font-size: 16px; 
+      color: white; 
+      background-color: #007bff; 
+      border: none; 
+      border-radius: 10px; 
+      cursor: pointer;
+    ">
+      MULTICHOICE
+    </button>
+  </a>
 
+  <a href="/documentation/airtime.md" style="text-decoration: none;">
+    <button style="
+      padding: 10px 20px; 
+      font-size: 16px; 
+      color: white; 
+      background-color: #007bff; 
+      border: none; 
+      border-radius: 10px; 
+      cursor: pointer;
+    ">
+      AIRTIME
+    </button>
+  </a>
 
-PrepaidPlus offers water utilities as a service that can be integrated with your applications.
-
-<a href="/documentation/waterUtilities.md">
-  <button style="padding: 10px 20px; font-size: 16px; color: white; background-color: #007bff; border: none; border-radius: 5px;">WATER UTILITIES</button>
-</a>
-<p>Please click the button for more information.</p>
-
-### Prepaid Electricity
-
-The Prepaid Electricity section describes the processes involved in purchasing prepaid electricity via the Vend protocol. It outlines the functionality for customers, vendors, and the Vend system.
-
-<a href="/documentation/electricity.md">
-  <button style="padding: 10px 20px; font-size: 16px; color: white; background-color: #007bff; border: none; border-radius: 5px;">ELECTRICITY</button>
-</a>
-<p>Please click the button for more information.</p>
-
-### MultiChoice
-
-The DSTV  cover purchasing and managing DSTV services through the PWS Multichoice DSTV API. This section explains how customers, vendors, and the PWS client and MultiChoice servers interact.
-
-<a href="/documentation/multichoice.md">
-  <button style="padding: 10px 20px; font-size: 16px; color: white; background-color: #007bff; border: none; border-radius: 5px;">MULTICHOICE</button>
-</a>
-<p>Please click the button for more information.</p>
-
-### Prepaid Airtime
-
-The Prepaid Airtime section covers the workflow for purchasing mobile airtime pins for different mobile network operators.
-
-<a href="/documentation/airtime.md">
-  <button style="padding: 10px 20px; font-size: 16px; color: white; background-color: #007bff; border: none; border-radius: 5px;">AIRTIME</button>
-</a>
-<p>Please click the button for more information.</p>
+</div>
