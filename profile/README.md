@@ -77,8 +77,9 @@ Contact the PrepaidPlus Support Department to request API access. When access is
 
 
 
-[![WATER](/assets/icons8-water-48.png)](/documentation/waterUtilities.md)
-[![ELECTRICITY](./assets/icons8-electricity-64.png)](/documentation/electricity.md)
-[![MULTICHOICE](./assets/icons8-multichoice-64.png)](/documentation/multichoice.md)
-[![AIRTIME](./assets/icons8-airtime-64.png)](/documentation/airtime.md)
 
+
+<a href="/documentation/waterUtilities.md" style="font-size: 5em;">💧 </a>
+<a href="/documentation/electricity.md" style="font-size: 5em;">⚡ </a>
+<a href="/documentation/multichoice.md" style="font-size: 5em;">📺 </a>
+<a href="/documentation/airtime.md" style="font-size: 5em;">📱 </a>
