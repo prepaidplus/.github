@@ -74,66 +74,27 @@ Contact the PrepaidPlus Support Department to request API access. When access is
 | Base64     | [Your Base64 String]|                                                                 |
 
 Note: Semicolon between apiKey and password is important.
-<div style="display: flex; gap: 10px;">
-
-<a href="/documentation/waterUtilities.md" style="text-decoration: none;">
-  <button style="
-    padding: 10px 20px; 
-    font-size: 16px; 
-    color: white; 
-    background-color: #007bff; 
-    border: none; 
-    border-radius: 10px; 
-    cursor: pointer;
-  ">
-    WATER
-  </button>
-</a>
-
-<br>
-
-<a href="/documentation/electricity.md" style="text-decoration: none;">
-  <button style="
-    padding: 10px 20px; 
-    font-size: 16px; 
-    color: white; 
-    background-color: #007bff; 
-    border: none; 
-    border-radius: 10px; 
-    cursor: pointer;
-  ">
-    ELECTRICITY
-  </button>
-</a>
-
-<br>
-
-<a href="/documentation/multichoice.md" style="text-decoration: none;">
-  <button style="
-    padding: 10px 20px; 
-    font-size: 16px; 
-    color: white; 
-    background-color: #007bff; 
-    border: none; 
-    border-radius: 10px; 
-    cursor: pointer;
-  ">
-    MULTICHOICE
-  </button>
-</a>
-
-<br>
-
-<a href="/documentation/airtime.md" style="text-decoration: none;">
-  <button style="
-    padding: 10px 20px; 
-    font-size: 16px; 
-    color: white; 
-    background-color: #007bff; 
-    border: none; 
-    border-radius: 10px; 
-    cursor: pointer;
-  ">
-    AIRTIME
-  </button>
-</a>
+<table>
+  <tr>
+    <td>
+      <a href="/documentation/waterUtilities.md">
+        <img src="/assets/icons8-water-48.png" alt="WATER" style="width: 50px; height: 50px;">
+      </a>
+    </td>
+    <td>
+      <a href="/documentation/electricity.md">
+        <img src="./icons/electricity-icon.png" alt="ELECTRICITY" style="width: 50px; height: 50px;">
+      </a>
+    </td>
+    <td>
+      <a href="/documentation/multichoice.md">
+        <img src="./icons/multichoice-icon.png" alt="MULTICHOICE" style="width: 50px; height: 50px;">
+      </a>
+    </td>
+    <td>
+      <a href="/documentation/airtime.md">
+        <img src="./icons/airtime-icon.png" alt="AIRTIME" style="width: 50px; height: 50px;">
+      </a>
+    </td>
+  </tr>
+</table>
