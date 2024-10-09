@@ -79,7 +79,7 @@ Contact the PrepaidPlus Support Department to request API access. When access is
 
 
 
-<a href="/documentation/waterUtilities.md" style="font-size: 5em;">💧 </a>
-<a href="/documentation/electricity.md" style="font-size: 5em;">⚡ </a>
-<a href="/documentation/multichoice.md" style="font-size: 5em;">📺 </a>
-<a href="/documentation/airtime.md" style="font-size: 5em;">📱 </a>
+<a href="/documentation/waterUtilities.md" style="font-size: 20em;">💧 </a>
+<a href="/documentation/electricity.md" style="font-size: 20em;">⚡ </a>
+<a href="/documentation/multichoice.md" style="font-size: 20em;">📺 </a>
+<a href="/documentation/airtime.md" style="font-size: 20em;">📱 </a>
