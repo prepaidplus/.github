@@ -75,14 +75,27 @@ Contact the PrepaidPlus Support Department to request API access. When access is
 
 **Note:** Semicolon between `apiKey` and `password` is important.
 
-<a href="/documentation/waterUtilities.md" style="text-decoration: none;">
-  <kbd style="
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #007bff;
-    border-radius: 5px;
-    cursor: pointer;
-  "> <br> Water Utilities <br> </kbd>
-</a>
+<table>
+  <tr>
+    <td>
+      <a href="/documentation/waterUtilities.md">
+        <kbd> <br> WATER <br> </kbd>
+      </a>
+    </td>
+    <td>
+      <a href="/documentation/electricity.md">
+        <kbd> <br> ELECTRICITY <br> </kbd>
+      </a>
+    </td>
+    <td>
+      <a href="/documentation/multichoice .md">
+        <kbd> <br> MULTICHOICE <br> </kbd>
+      </a>
+    </td>
+    <td>
+      <a href="/documentation/airtime.md">
+        <kbd> <br> AIRTIME <br> </kbd>
+      </a>
+    </td>
+  </tr>
+</table>
