@@ -1,62 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        .logo {
-            display: block;
-            margin-bottom: 20px;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px 0;
-            background: #063970;
-            color: white;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-        .button:hover {
-            background: #052a5e;
-            transform: scale(1.05);
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background-color: #fff;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        h2, h3 {
-            color: #063970;
-        }
-        p {
-            margin: 10px 0;
-        }
-    </style>
-</head>
-<body>
-
-<img src="../documentation/Prepaidplus%20logo-01.png" alt="PrepaidPlus Logo" width="150" class="logo"/>
 
 # PWS Water Utilities Cooperation Use Cases and Workflows
 
@@ -194,5 +135,286 @@ The workflow for the WUC Confirm Payment process is as presented below in Table 
 | 2        |                                                                        | PrepaidPlus receives confirmation of the payment from Finclude POS. PrepaidPlus validates the merchant API Key and checks the available balance in the Merchant account (i.e. within PrepaidPlus system) to ensure there is sufficient balance to meet the amount requested for purchase. If the balance is insufficient, an error message is returned. If the above checks are positive, PrepaidPlus sends the payment request to the WUC server, and receives a confirmation once the payment is successfully processed and sends back a response to Finclude POS. |
 | 3        |                                                                        | Finclude POS prints the payment receipt details. |
 
-</body>
-</html>
+
+
+## METHODS
+### CONFIRM CUSTOMER
+
+The Confirm Customer Request is used to verify that the following are in place before accepting payment towards a contract number linked to WUC:
+- The customer number & contract number are valid and are the correct ones the buyer intends to make payment for, and also that the account is active.
+
+The Confirm Customer request either returns the customer details along with amounts owed and plot number, or returns an indication that the transaction cannot proceed, as well as an explanation of the cause of the failure.
+
+#### Send a Confirm Customer Call Request
+
+Send a Confirm Customer request to one of the following endpoints:
+- **Production:** Will be advised once testing and integration on development server completed
+- **Sandbox:** https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/wuc/trialvend
+
+The Confirm Customer call requires the following fields:
+
+| Argument       | Type   | Description                                                                                                      |
+|----------------|--------|------------------------------------------------------------------------------------------------------------------|
+| apiKey         | string | **Mandatory:** Secret API Key authenticates the merchant. Passed in authorization header (Base 64 encoded) as part of Basic Authentication scheme. |
+| password       | string | **Mandatory:** Merchant password. Passed in authorization header as part of Basic Authentication scheme.         |
+| clientSaleId   | string | **Mandatory:** This is a unique client supplied reference number. Used to identify request. Supplied by: Caller.  |
+| contractNumber | string | **Mandatory:** This is the customer’s WUC contract number.                                                       |
+| customerNumber | string | **Mandatory:** This is the customer’s WUC customer number.                                                       |
+| cellPhone      | string | **Mandatory:** This is the customer phone number.                                                                |
+| operatorId     | string | **Mandatory:** This is the name of person/channel or id of POS making the transaction. Supplied by Caller.       |
+| outletId       | string | **Mandatory:** This is the id of the store or channel the request is being made from. Supplied by Caller.        |
+
+
+
+The contractNumber & customerNumber to be used:
+
+### Table 6.16: Test Numbers
+
+| Customer Number | Contract Number | Account Details |
+|-----------------|-----------------|-----------------|
+| 161362          | 186439          | Firstname: GOBA Surname: REETSANG Plot: 8557 |
+| 184960          | 215798          | Firstname: FRED Surname: KOBUE Plot: 01662 |
+| 492686          | 659319          | Firstname: MOTINGWA Surname: GODFREY Plot: 1-07-00342 |
+
+### Making the Confirm Customer Call
+
+The Confirm Customer Request call is successful when you receive the following details: customer name, plot number, and due amount.
+
+If the call fails, you will receive one of the following faults/errors:
+
+### Table 6.17: Confirm Customer Errors
+
+| Error No | Short Message        | Description                                      |
+|----------|----------------------|--------------------------------------------------|
+| 01       | API key missing       | API Key not provided.                           |
+| 02       | Invalid API key       | Unable to authenticate supplied API key.        |
+| 03       | Invalid API Password  | Unable to authenticate supplied password.       |
+| 04       | Disabled API key      | The provided API Key is disabled                |
+| 06       | Unexpected Error      | An unexpected exception has occurred.           |
+| 11       | Authorisation failed  | Authorisation Header is not provided            |
+| 102      | clientSaleId missing  | Missing a mandatory field - provider            |
+| 103      | outletId missing      | Missing a mandatory field - provider            |
+| 105      | operatorId missing    | Missing a mandatory field - provider            |
+| 110      | Contract number missing | Contract Number is not provided.              |
+|          | Customer number missing | Customer number is not provided.              |
+| 203      | Vendor Error          | Pass-on Business Error returned by Vendor.      |
+| 204      | Disabled Outlet       | The provided OutletId is currently disabled.    |
+| 205      | Invalid Outlet Id     | The provided OutletId was not found.            |
+
+The above errors are faults, which are fatal, call-level errors. When a fault occurs, nothing is processed because the entire call was invalid.
+
+### Confirm Customer Response
+
+### Table 6.18: Confirm Customer Response
+
+| Argument        | Type    | Description                                      |
+|-----------------|---------|--------------------------------------------------|
+| contractNumber  | string  | The customer’s WUC contract number               |
+| customerNumber  | string  | The customer’s WUC customer number               |
+| firstName       | string  | WUC customer’s first name                        |
+| surname         | string  | WUC customer’s last name                         |
+| amountDue       | number  | Amount due to WUC.                               |
+| meterPlot       | string  | WUC customer’s plot number                       |
+| cellPhone       | string  | The cellphone number supplied by the customer    |
+| verified        | boolean | The status of whether the customer’s details have been verified with WUC or not |
+
+### Confirm Customer Examples
+
+The example request and response demonstrate a Confirm Customer Request call and response. 
+
+### Example Request
+
+This example uses the following fields and values:
+
+![Example Request Screenshot](/assets/example%20request%20wuc.png)
+
+### Example Response
+
+Here is an example of a JSON response you might receive:
+
+![Example Response Screenshot](/assets/wuc%20response.png)
+
+### 7.5.2 Confirm Fees
+
+The Confirm Fees Request is used to calculate & verify the following:
+- The transaction fees and the total transaction amount that would be associated with the transaction dependent on the payment amount that the customer wants to pay.
+
+The Confirm Fee request either returns the transaction fee and the transaction amount and/or returns an indication that the transaction cannot proceed, as well as an explanation of the cause of the failure.
+
+#### Send a Confirm Fee Call Request
+Send a Confirm Fees request to one of the following endpoints:
+- **Production:** Will be advised once testing and integration on development server completed
+- **Sandbox:** [https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/wuc/calculateFees](https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/wuc/calculateFees)
+
+The Confirm Fees call requires the following fields:
+
+**Table 6.15: Confirm Fees call requirements**
+
+| Argument      | Type    | Description                                                                                                      |
+|---------------|---------|------------------------------------------------------------------------------------------------------------------|
+| apiKey        | string  | **Mandatory:** Secret API Key authenticates the merchant. Passed in authorization header (Base 64 encoded) as part of Basic Authentication scheme. |
+| password      | string  | **Mandatory:** Merchant password. Passed in authorization header as part of Basic Authentication scheme.         |
+| paymentAmount | number  | **Mandatory:** This is the amount the customer intends to pay towards their WUC bill.                            |
+
+#### Making the Confirm Fees Call
+The Confirm Fees Request call is successful when you receive the following details: payment amount, transaction fee, transaction amount.
+If the call fails, you will receive one of the following faults/errors:
+
+**Table 6.17: Confirm Fee Errors**
+
+| Error No | Short Message            | Description                                                                 |
+|----------|--------------------------|-----------------------------------------------------------------------------|
+| 01       | API key missing          | API Key not provided.                                                       |
+| 02       | Invalid API key          | Unable to authenticate supplied API key.                                    |
+| 03       | Invalid API Password     | Unable to authenticate supplied password.                                   |
+| 04       | Disabled API key         | The provided API Key is disabled                                            |
+| 06       | Unexpected Error         | An unexpected exception has occurred.                                       |
+| 11       | Authorisation failed     | Authorisation Header is not provided                                        |
+| 110      | Invalid payment amount   | The provided payment amount value is in an invalid format.                  |
+|          | PaymentAmount missing    | Payment amount not provided                                                 |
+
+The above errors are faults, which are fatal, call-level errors. When a fault occurs, nothing is processed because the entire call was invalid.
+
+#### Confirm Fees Response
+
+**Table 6.18: Confirm Fees Response**
+
+| Argument         | Type    | Description                                                                 |
+|------------------|---------|-----------------------------------------------------------------------------|
+| paymentAmount    | number  | The amount the customer intends to pay towards their bill                    |
+| transactionFee   | number  | The fee that would be associated with the payment                            |
+| transactionAmount| number  | The total transaction amount                                                 |
+
+#### Confirm Fees Examples
+The example request and response demonstrate a Confirm Fees Request call and response.
+
+**Example Request**
+
+
+![Example confirm fees Screenshot](/assets/confirm%20fees%20example%20.png)
+
+**Example Response**
+
+![Example confirm fees response Screenshot](/assets/confirm%20fees%20response%20.png)
+
+### 7.5.3 Confirm Payment
+
+The Confirm Payment Request is to be made after confirming the customer and confirming the fees to be associated with the transaction. The confirm payment request is used to process and confirm the WUC payment that the customer intended to make. The Confirm Payment request either returns the transaction fee and the transaction amount and/or returns an indication that the transaction cannot proceed, as well as an explanation of the cause of the failure.
+
+#### Send a Confirm Payment Call Request
+Send a Confirm Payment request to one of the following endpoints:
+- **Production:** Will be advised once testing and integration on development server completed
+- **Sandbox:** [https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/wuc/creditvend](https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/wuc/creditvend)
+
+The Confirm Payment call requires the following fields:
+
+**Table 6.15: Confirm Payment call requirements**
+
+| Argument        | Type    | Description                                                                                                      |
+|-----------------|---------|------------------------------------------------------------------------------------------------------------------|
+| apiKey          | string  | **Mandatory:** Secret API Key authenticates the merchant. Passed in authorization header (Base 64 encoded) as part of Basic Authentication scheme. |
+| password        | string  | **Mandatory:** Merchant password. Passed in authorization header as part of Basic Authentication scheme.         |
+| paymentAmount   | number  | **Mandatory:** This is the amount the customer intends to pay towards their WUC bill.                            |
+| contractNumber  | string  | **Mandatory:** This is the customer’s WUC contract number.                                                       |
+| customerNumber  | string  | **Mandatory:** This is the customer’s WUC customer number.                                                       |
+| cellPhone       | string  | **Mandatory:** This is the customer phone number.                                                                |
+| operatorId      | string  | **Mandatory:** This is the name of person/channel or id of POS making the transaction. Supplied by Caller.       |
+| clientSaleId    | string  | **Mandatory:** This is a unique client supplied reference number. Used to identify request. Supplied by Caller.  |
+| outletId        | string  | **Mandatory:** This is the unique Identifier of store or sale channel the purchase is being made from.           |
+| terminalId      | string  | **Mandatory:** This is an identifier for the device or channel carrying out the transaction.                     |
+
+#### Making the Confirm Payment Call
+The Confirm Payment Request call is successful when you receive the following details: payment amount, transaction fee, transaction amount, transactionId, and response element with a successful value. If the call fails, you will receive one of the following faults/errors:
+
+**Table 6.17: Confirm Payment Errors**
+
+| Error No | Short Message            | Description                                                                 |
+|----------|--------------------------|-----------------------------------------------------------------------------|
+| 01       | API key missing          | API Key not provided.                                                       |
+| 02       | Invalid API key          | Unable to authenticate supplied API key.                                    |
+| 03       | Invalid API Password     | Unable to authenticate supplied password.                                   |
+| 04       | Disabled API key         | The provided API Key is disabled                                            |
+| 06       | Unexpected Error         | An unexpected exception has occurred.                                       |
+| 11       | Authorisation failed     | Authorisation Header is not provided                                        |
+| 102      | clientSaleId is missing  | clientSaleId is not provided.                                               |
+| 110      | Contract number missing  | Contract Number is not provided.                                            |
+| 110      | Customer number missing  | Customer number is not provided.                                            |
+| 110      | Invalid payment amount   | The provided payment amount value is in an invalid format.                  |
+|          | PaymentAmount missing    | Payment amount not provided                                                 |
+
+The above errors are faults, which are fatal, call-level errors. When a fault occurs, nothing is processed because the entire call was invalid.
+
+#### Confirm Payment Response
+
+**Table 6.18: Confirm Payment Response**
+
+| Argument            | Type    | Description                                                                 |
+|---------------------|---------|-----------------------------------------------------------------------------|
+| paymentAmount       | number  | The amount the customer intends to pay towards their bill                    |
+| transactionFee      | number  | The fee that would be associated with the payment                            |
+| transactionAmount   | number  | The total transaction amount                                                 |
+| customerNumber      | string  | The customer's WUC customer number                                           |
+| contractNumber      | string  | The customer’s WUC contract number                                           |
+| cellPhone           | string  | The customer’s phone number                                                  |
+| customerName        | string  | The customer’s full names                                                    |
+| customerPlot        | string  | The customer’s plot number                                                   |
+| code                | string  | The transaction’s response code                                              |
+| transactionId       | string  | The transaction id used to identify the transaction                          |
+| transactionDateTime | string  | The date stamp the transaction was recorded                                  |
+| clientSaleId        | string  | The transaction clientSaleId                                                 |
+| provider            | string  | Water Utilities Corporation                                                  |
+
+#### Confirm Payment Examples
+The example request and response demonstrate a Confirm Payment Request call and response.
+
+**Example Request**
+![Example Confirm Payments Screenshot](/assets/confirm%20payments.png)
+
+**Example Response**
+![Example Confirm Payments Screenshot](/assets/confirm%20payments%20response%20.png)
+
+
+## 7.5.4 WUC LastResponse
+
+This method is called subsequent to an ongoing Payment Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the payment. In an event that the failed Payment Request had resulted in a successful payment, the payment receipt is retrieved and returned for printing, otherwise the payment is abandoned. The LastResponse request either returns the transaction receipt details, or an indication that the requested transaction was processed and/or returns an indication that the transaction cannot proceed, as well as an explanation of the cause of the failure.
+
+#### Send a LastResponse Call Request
+Send a LastResponse request to one of the following endpoints:
+- **Production:** Will be advised once testing and integration on development server completed
+- **Sandbox:** [https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/wuc/advice](https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/wuc/advice)
+
+The LastResponse call requires the following fields:
+
+**Table 6.15: LastResponse call requirements**
+
+| Argument      | Type    | Description                                                                                                      |
+|---------------|---------|------------------------------------------------------------------------------------------------------------------|
+| apiKey        | string  | **Mandatory:** Secret API Key authenticates the merchant. Passed in authorization header (Base 64 encoded) as part of Basic Authentication scheme. |
+| password      | string  | **Mandatory:** Merchant password. Passed in authorization header as part of Basic Authentication scheme.         |
+| clientSaleId  | string  | **Mandatory:** This is the clientSaleId of the request whose status is in question.                              |
+
+#### Making the LastResponse Call
+The LastResponse Request call is successful when you receive the transaction receipt details or a response stating that the transaction in question was not processed. If the call fails, you will receive one of the following faults/errors:
+
+**Table 6.17: Confirm Fee Errors**
+
+| Error No | Short Message            | Description                                                                 |
+|----------|--------------------------|-----------------------------------------------------------------------------|
+| 01       | API key missing          | API Key not provided.                                                       |
+| 02       | Invalid API key          | Unable to authenticate supplied API key.                                    |
+| 03       | Invalid API Password     | Unable to authenticate supplied password.                                   |
+| 04       | Disabled API key         | The provided API Key is disabled                                            |
+| 06       | Unexpected Error         | An unexpected exception has occurred.                                       |
+| 11       | Authorisation failed     | Authorisation Header is not provided                                        |
+
+The above errors are faults, which are fatal, call-level errors. When a fault occurs, nothing is processed because the entire call was invalid.
+
+#### LastResponse Examples
+The example request and response demonstrate a LastResponse Request call and response.
+
+![Example Last Response Call Screenshot](/assets/last%20response%20call.png)
+
+**Example Request**
+
+This example uses the following fields and values:
+![Example Last Response Call Screenshot](/assets/last%20response%20call%20.png)
