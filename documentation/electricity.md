@@ -4,7 +4,7 @@
 
 The Use Case and workflow are presented for each task. A use case is defined as a single task, performed by the end user of the system, which has some useful outcome to the end user.
 
-It must be noted that the use cases and workflows are only meant to guide those involved in the development of the interface and are in no way meant to be a technical definition of how the interface will work. The technical definition of the interface is presented at Section 5 - Methods.
+It must be noted that the use cases and workflows are only meant to guide those involved in the development of the interface and are in no way meant to be a technical definition of how the interface will work. 
 
 Vend use cases are used to describe the functionality exposed by the Vend protocol. Each use case is aimed at complying with specific requirements of the following use case actors:
 
@@ -15,7 +15,7 @@ Vend use cases are used to describe the functionality exposed by the Vend protoc
 
 ### Use Case Actors, Responsibilities and Collaborators
 
-Table 3.1 describes use case actors, their responsibilities and collaborators:
+Table  describes use case actors, their responsibilities and collaborators:
 
 | Use case actor | Responsibilities                                                                 | Collaborators                           |
 |----------------|----------------------------------------------------------------------------------|-----------------------------------------|
