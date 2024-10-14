@@ -4,7 +4,7 @@
 
 The Use Case and workflow are presented for each task. A use case is defined as a single task, performed by the end user of the system, which has some useful outcome to the end user.
 
-It must be noted that the use cases and workflows are only meant to guide those involved in the development of the interface and are in no way meant to be a technical definition of how the interface will work. 
+It must be noted that the use cases and workflows are only meant to guide those involved in the development of the interface and are in no way meant to be a technical definition of how the interface will work. The technical definition of the interface is presented at Section 5 - Methods.
 
 Vend use cases are used to describe the functionality exposed by the Vend protocol. Each use case is aimed at complying with specific requirements of the following use case actors:
 
@@ -15,7 +15,7 @@ Vend use cases are used to describe the functionality exposed by the Vend protoc
 
 ### Use Case Actors, Responsibilities and Collaborators
 
-Table  describes use case actors, their responsibilities and collaborators:
+Table 3.1 describes use case actors, their responsibilities and collaborators:
 
 | Use case actor | Responsibilities                                                                 | Collaborators                           |
 |----------------|----------------------------------------------------------------------------------|-----------------------------------------|
@@ -200,16 +200,61 @@ The example request and response demonstrate a TrialCreditVend Request call and 
 
 This example uses the following fields and values:
 
-![Example Request](/assets/exampleRequestelectricity.png)
+````javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Basic ");
+myHeaders.append("Content-Type", "application/json");
 
+var raw = JSON.stringify({
+  	"meterNumber": "",
+  	"transactionAmount": ,
+  	"terminalId": "",
+  	"clientSaleId": "",
+"outletId": "",
+" operatorId ": "",
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialvend", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+````
 **Example Response**
-
-![Example Response](/assets/exampleResponse.png)
+````javascript
+{
+    "code": "0",
+    "custVendDetail": {
+        "name": "     ",
+        "meterNumber": "",
+        "amtTendered": ""
+    },
+    "clientSaleId": "",
+    "transactionAmount": "",
+    "response": "Successful"
+}
+`````
 
 
 **Example Fault**
-
-![Example Fault](/assets/exampleResponse.png)
+````javascript
+{
+"code": "103",
+    	"response": "Failure",
+"message": "OutletId is missing",
+    	"description": "OutletId is not provided ",
+    	"transactionId": null,
+    	"meterNumber": "04040404040",
+    	"amount": 10,
+    	"status": 500
+}
+``````
 
 
 ## Credit Vend Use Case
@@ -350,15 +395,88 @@ The example request and response demonstrate a CreditVend Request call and respo
 **Example Request**
 
 This example uses the following fields and values:
+````javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "");
+myHeaders.append("Content-Type", "application/json");
 
-![Example Request](/assets/example%20request%20creditvend.png)
+var raw = JSON.stringify({
+  	"meterNumber": "",
+  	"transactionAmount": ,
+  	"terminalId": "",
+  	"clientSaleId": "",
+"outletId": "",
+" operatorId ": "",
+});
 
-**Example Response**
-![Example Response](/assets/exampleResponsecredit.png)
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/creditvend", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+````
+**Example Response**`
+````javascript
+{
+    "code": "0",
+    "creditVendReceipt": {
+        "clientId": "",
+        "account": "",
+        "location": "",
+        "name": "    ",
+        "date": "2020-03-02 14:32:14",
+        "receiptNo": "",
+        "amtTendered": ,
+        "costUnits": ,
+        "standardCharge": ,
+        "governmentLevy": ,
+        "vat": ,
+        "desc": "Credit Token",
+        "tariff": "Business",
+        "tariffBreakdown": [
+            {
+                "units": "",
+                "rate": ""
+            },
+            {
+                "units": "",
+                "rate": ""
+            }
+        ],
+        "tokenUnits": "",
+        "meterType": "",
+        "krn": "",
+        "ti": "",
+        "meterNumber": "",
+        "sgc": "",
+ "keychangetoken1": "",
+        "keychangetoken2": "",
+ "stsCipher": ""
+
+    },
+    "transactionId": "",
+    "clientSaleId": "",
+    "transactionAmount": ,
+    "response": "Successful"
+}
+``````
 
 **Example Fault**
-![Example Fault](/assets/exampleFaultcredit.png)
+```javascript
+{
+"code": ""
+"response": "",
+"message": "MinimumMaximum amount error",
+"description": " Amount requested is either less or more than the allowed amount."
+}
 
+``````
 ## Last Response Use Case
 
 #### Last Response Description
@@ -457,7 +575,7 @@ The errors above are faults, which are fatal, call-level errors. When a fault oc
 | creditVendReceipt| element| **Mandatory:** This is the service providers receipt details for the transaction.                                |
 | clientSaleId     | string | **Mandatory:** This is the Merchant POS sale/transaction Id that uniquely identifies transaction.                |
 
-**Table : Credit Vend Receipt**
+**Table 6.14: Credit Vend Receipt**
 
 | Argument         | Type   | Description                                                                                                      |
 |------------------|--------|------------------------------------------------------------------------------------------------------------------|
@@ -484,19 +602,58 @@ The errors above are faults, which are fatal, call-level errors. When a fault oc
 
 The example request and response demonstrate a LastResponse Request call and response.
 
+### Example Request
 
+```javascript
+// Create headers
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Basic "); // Replace with your Base64 encoded API key and password
+myHeaders.append("Content-Type", "application/json");
 
+// Create request body
+var raw = JSON.stringify({
+    "meterNumber": "", // Replace with the actual meter number
+    "transactionAmount": , // Replace with the actual transaction amount
+    "terminalId": "", // Replace with the actual terminal ID
+    "clientSaleId": "", // Replace with the actual client sale ID
+    "outletId": "", // Replace with the actual outlet ID
+    "operatorId": "", // Replace with the actual operator ID
+});
 
-![Example Request](/assets/LastResponseRequest.png)
+// Create request options
+var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+};
 
-
-
-
+// Send request
+fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialvend", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+ ````
 **Example Response**
-![Example Response](/assets/exampleResponsecredit.png)
-
+````javascript
+{
+"code": "0",
+ 	"balance": 26798.592500000013,
+"lastDeposit": {
+"date": "YYYY-MM-DDT[hh][mm][ss]"
+    	"channel": "EFT",
+    	"amount": 20000
+}
+"response": "Successful"
+}
+````
 
 **Example Fault**
-![Example Fault](/assets/exampleFaultresponse.png)
-
-
+````javascript
+{
+    "code": "01",
+    "response": "Failure",
+    "message": "API key missing.",
+    "description": "API Key not provided"
+}
+``````
