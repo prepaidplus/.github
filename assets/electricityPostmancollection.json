@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "b1a671d7-4fa9-4c1d-bd1f-6ebe9c7bc0a5",
+		"name": "Electricity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38113484"
+	},
+	"item": [
+		{
+			"name": "trielVend",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "0000",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"meterNumber\": \"14021014718\",\r\n    \"transactionAmount\": 10,\r\n    \"terminalId\": \"Web\",\r\n    \"clientSaleId\": \"poiuq\",\r\n    \"outletId\": \"52132733-01\",\r\n    \"operatorId\": \"52132733-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialvend",
+					"protocol": "https",
+					"host": [
+						"api",
+						"prepaidplus",
+						"co",
+						"bw"
+					],
+					"path": [
+						"apimanager",
+						"rest",
+						"basic",
+						"v1",
+						"electricity",
+						"trialvend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "creditVend",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "H6F3eanmT11WL2lFWZbG",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "0000",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"clientSaleId\": \"smartplan-11042024\",\r\n\"meterNumber\": \"14021014718\",\r\n\"operatorId\": \"52132733-01\",\r\n\"outletId\": \"52132733-01\",\r\n\"terminalId\": \"web\",\r\n\"transactionAmount\": 50.9\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/creditvend",
+					"protocol": "https",
+					"host": [
+						"api",
+						"prepaidplus",
+						"co",
+						"bw"
+					],
+					"path": [
+						"apimanager",
+						"rest",
+						"basic",
+						"v1",
+						"electricity",
+						"creditvend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lastResponse",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "H6F3eanmT11WL2lFWZbG",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "0000",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientSaleId\": \"smartplan-11042024\",\r\n    \"outletId\": \"52132733-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/advice",
+					"protocol": "https",
+					"host": [
+						"tps",
+						"prepaidplus",
+						"co",
+						"bw"
+					],
+					"path": [
+						"apimanager",
+						"rest",
+						"basic",
+						"v1",
+						"electricity",
+						"advice"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

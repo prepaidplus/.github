@@ -13,6 +13,8 @@ Vend use cases are used to describe the functionality exposed by the Vend protoc
 - Vend client
 - Vend Server
 
+#### Download Postman Collection
+You can download the Postman collection for this use case [here](/assets/electricityPostmancollection.json). <!-- Replace with the actual path to your Postman collection file -->
 ### Use Case Actors, Responsibilities and Collaborators
 
 Table 3.1 describes use case actors, their responsibilities and collaborators:
@@ -38,14 +40,6 @@ Table 3.1 describes use case actors, their responsibilities and collaborators:
 |                | - Responds with a fault response message, if required.                           |                                         |
 
 ### Prepaid Electricity Methods
-
-
-This section details the supported calls in the API. Either one of the following store codes are to be used in the calls in the test environment.
-
-**Outlet Id** | **Outlet Name**
---------------|---------------
-4958-01       | 
-
 
 
 **Table : Supported Prepaid Electricity Methods**
@@ -202,59 +196,58 @@ This example uses the following fields and values:
 
 ````javascript
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Basic ");
+myHeaders.append("Authorization", "Basic base64string"); // Replace with your base64 encoded string
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
-  	"meterNumber": "",
-  	"transactionAmount": ,
-  	"terminalId": "",
-  	"clientSaleId": "",
-"outletId": "",
-" operatorId ": "",
+    "meterNumber": "04040404040", // Replace with the actual meter number
+    "transactionAmount": 10, // Replace with the actual transaction amount
+    "terminalId": "Web", // Replace with the actual terminal ID
+    "clientSaleId": "12345678", // Replace with the actual client sale ID
+    "outletId": "0000-01", // Replace with the actual outlet ID
+    "operatorId": "example-01", // Replace with the actual operator ID
 });
 
 var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
 };
 
 fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialvend", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 ````
+
 **Example Response**
 ````javascript
 {
     "code": "0",
     "custVendDetail": {
-        "name": "     ",
-        "meterNumber": "",
-        "amtTendered": ""
+        "name": "John Doe", // Replace with the actual name
+        "meterNumber": "04040404040", // Replace with the actual meter number
+        "amtTendered": 10 // Replace with the actual amount tendered
     },
-    "clientSaleId": "",
-    "transactionAmount": "",
+    "clientSaleId": "1639124683", // Replace with the actual client sale ID
+    "transactionAmount": 10, // Replace with the actual transaction amount
     "response": "Successful"
 }
-`````
-
-
+````
 **Example Fault**
 ````javascript
 {
-"code": "103",
-    	"response": "Failure",
-"message": "OutletId is missing",
-    	"description": "OutletId is not provided ",
-    	"transactionId": null,
-    	"meterNumber": "04040404040",
-    	"amount": 10,
-    	"status": 500
+         "code":"103",
+         "response":"Failure",
+         "message":"OutletId is missing",
+         "description": "OutletId is not provided ",
+    	 "transactionId": null,
+    	 "meterNumber": "04040404040",
+    	  "amount": 10,
+    	  "status": 500
 }
-``````
+````
 
 
 ## Credit Vend Use Case
@@ -396,87 +389,87 @@ The example request and response demonstrate a CreditVend Request call and respo
 
 This example uses the following fields and values:
 ````javascript
+
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "");
+myHeaders.append("Authorization", "Basic base64string"); // Replace with your base64 encoded string
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
-  	"meterNumber": "",
-  	"transactionAmount": ,
-  	"terminalId": "",
-  	"clientSaleId": "",
-"outletId": "",
-" operatorId ": "",
+    "meterNumber": "1234567890", // Example meter number
+    "transactionAmount": 100, // Example transaction amount
+    "terminalId": "WebTerminal", // Example terminal ID
+    "clientSaleId": "example-client-sale-id", // Example client sale ID
+    "outletId": "example-outlet-id", // Example outlet ID
+    "operatorId": "example-operator-id" // Example operator ID
 });
 
 var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
 };
 
 fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/creditvend", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-````
-**Example Response**`
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+```````
+
+**Example Response**
 ````javascript
 {
     "code": "0",
     "creditVendReceipt": {
-        "clientId": "",
-        "account": "",
-        "location": "",
-        "name": "    ",
-        "date": "2020-03-02 14:32:14",
-        "receiptNo": "",
-        "amtTendered": ,
-        "costUnits": ,
-        "standardCharge": ,
-        "governmentLevy": ,
-        "vat": ,
+        "clientId": "PP0000", // Example client ID
+        "account": "000000000", // Example account
+        "location": "123456", // Example location
+        "name": "John Doe", // Example name
+        "date": "2020-03-02 14:32:14", // Example date
+        "receiptNo": "2468101214", // Example receipt number
+        "amtTendered": 100, // Example amount tendered
+        "costUnits": 50, // Example cost units
+        "standardCharge": 5, // Example standard charge
+        "governmentLevy": 2, // Example government levy
+        "vat": 10, // Example VAT
         "desc": "Credit Token",
         "tariff": "Business",
         "tariffBreakdown": [
             {
-                "units": "",
-                "rate": ""
+                "units": 25, // Example units
+                "rate": 2 // Example rate
             },
             {
-                "units": "",
-                "rate": ""
+                "units": 25, // Example units
+                "rate": 2 // Example rate
             }
         ],
-        "tokenUnits": "",
-        "meterType": "",
-        "krn": "",
-        "ti": "",
-        "meterNumber": "",
-        "sgc": "",
- "keychangetoken1": "",
-        "keychangetoken2": "",
- "stsCipher": ""
-
+        "tokenUnits": 100, // Example token units
+        "meterType": "Prepaid", // Example meter type
+        "krn": "1", // Example KRN
+        "ti": "6", // Example TI
+        "meterNumber": "1234567890", // Example meter number
+        "sgc": "300000", // Example SGC
+        "keychangetoken1": "8675 7587 7584 6834", // Example key change token 1
+        "keychangetoken2": "0968 7794 1029 9035", // Example key change token 2
+        "stsCipher": "3871 0157 9312 8553 5068r" // Example STS cipher
     },
-    "transactionId": "",
-    "clientSaleId": "",
-    "transactionAmount": ,
+    "transactionId": "G0rTNQFha5huk1M0dw", // Example transaction ID
+    "clientSaleId": "4929-01", // Example client sale ID
+    "transactionAmount": 100, // Example transaction amount
     "response": "Successful"
 }
-``````
+`````
 
 **Example Fault**
 ```javascript
 {
-"code": ""
-"response": "",
-"message": "MinimumMaximum amount error",
-"description": " Amount requested is either less or more than the allowed amount."
+    "code": "123", // Example error code
+    "response": "Failure",
+    "message": "MinimumMaximum amount error",
+    "description": "Amount requested is either less or more than the allowed amount."
 }
-
-``````
+```
 ## Last Response Use Case
 
 #### Last Response Description
@@ -601,23 +594,16 @@ The errors above are faults, which are fatal, call-level errors. When a fault oc
 **LastResponse Request Examples**
 
 The example request and response demonstrate a LastResponse Request call and response.
-
-### Example Request
-
 ```javascript
 // Create headers
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Basic "); // Replace with your Base64 encoded API key and password
+myHeaders.append("Authorization", "Basic base64string"); // Example Base64 encoded API key and password
 myHeaders.append("Content-Type", "application/json");
 
 // Create request body
 var raw = JSON.stringify({
-    "meterNumber": "", // Replace with the actual meter number
-    "transactionAmount": , // Replace with the actual transaction amount
-    "terminalId": "", // Replace with the actual terminal ID
-    "clientSaleId": "", // Replace with the actual client sale ID
-    "outletId": "", // Replace with the actual outlet ID
-    "operatorId": "", // Replace with the actual operator ID
+    "clientSaleId": "112354825", // Example client sale ID
+    "outletId": "4900-01" // Example outlet ID
 });
 
 // Create request options
@@ -629,31 +615,59 @@ var requestOptions = {
 };
 
 // Send request
-fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialvend", requestOptions)
+fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/advice", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
- ````
+```
+
 **Example Response**
-````javascript
+This example above makes a request for `clientSaleId: 3416` which for purposes of illustration had timed out, whilst the call had resulted in a successful sale.
+
+**Response**
+```javascript
 {
-"code": "0",
- 	"balance": 26798.592500000013,
-"lastDeposit": {
-"date": "YYYY-MM-DDT[hh][mm][ss]"
-    	"channel": "EFT",
-    	"amount": 20000
-}
-"response": "Successful"
+    "code": "0",
+    "creditVendReceipt": {
+        "clientId": "P1001", // Example client ID
+        "account": "3000550000", // Example account
+        "location": "52387", // Example location
+        "name": "DIPAMPIRI DINEO", // Example name
+        "date": "2020-03-28 13:37:12", // Example date
+        "receiptNo": "23036135", // Example receipt number
+        "amtTendered": 10, // Example amount tendered
+        "costUnits": 8.19, // Example cost units
+        "standardCharge": 0.43, // Example standard charge
+        "governmentLevy": 0.43, // Example government levy
+        "vat": 0.95, // Example VAT
+        "desc": "Credit Token",
+        "tariff": "Domestic",
+        "tokenUnits": "9.6kWh", // Example token units
+        "meterType": "02", // Example meter type
+        "krn": "1", // Example KRN
+        "ti": "1", // Example TI
+        "meterNumber": "94949494949", // Example meter number
+        "sgc": "200000", // Example SGC
+        "keychangetoken1": "8675 7587 7584 6834", // Example key change token 1
+        "keychangetoken2": "0968 7794 1029 9035", // Example key change token 2
+        "stsCipher": "3871 0157 9312 8553 5068" // Example STS cipher
+    },
+    "transactionId": "oyG4P6VEhBeJ8jLC6", // Example transaction ID
+    "clientSaleId": "3416", // Example client sale ID
+    "transactionAmount": 10, // Example transaction amount
+    "response": "Successful"
 }
 ````
+This response would close off a successful last response sale.
 
-**Example Fault**
+Example Fault
+
 ````javascript
 {
-    "code": "01",
-    "response": "Failure",
-    "message": "API key missing.",
-    "description": "API Key not provided"
+"code": "02"
+"response": "Failure",
+"message": "Invalid API Key",
+"description": "Unable to authenticate supplied API key."
 }
-``````
+
+````
