@@ -64,16 +64,16 @@ Contact the PrepaidPlus Support Department to request API access. When access is
 
 | API Point  | API Key             | Service information (generic domain)       |
 |------------|---------------------|--------------------------------------------|
-| Development| [Your Development Key] |             |
-| Production | [Your Production Key] |                                            |
+| Development| {{ Your Development Key }} |             |
+| Production | {{ Your Production Key }} |                                            |
 
 | Type       | Value               |                                                                 |
 |------------|---------------------|-----------------------------------------------------------------|
-| ApiKey     | [Your API Key]      | Base64Encode (_key:password } i.e Base64Encode (api_key:password) |
-| Password   | [Your Password]     |                                                                 |
-| Base64     | [Your Base64 String]|                                                                 |
+| ApiKey     | {{ api_key }}      | Base64Encode ( {{_api_key }} : {{ password }} )|
+| Password   | {{ password }}     |                                                                 |
+| Base64     |  {{ base64string }}|                                                                 |
 
-**Note:** Semicolon between `apiKey` and `password` is important.
+**Note:** Colon between `apiKey` and `password` is important.
 
 ## SERVICES 
 <table>
@@ -84,7 +84,7 @@ Contact the PrepaidPlus Support Department to request API access. When access is
       </a>
     </td>
     <td>
-      <a href="/documentation/multichoice .md">
+      <a href="/documentation/multichoice.md">
         <kbd> <br> MULTICHOICE <br> </kbd>
       </a>
     </td>
@@ -94,12 +94,12 @@ Contact the PrepaidPlus Support Department to request API access. When access is
       </a>
     </td>
      <td>
-      <a href="/documentation/waterUtilities.md">
+      <a href="/documentation/merchantBalance.md">
         <kbd> <br>MERCHANT BALANCE <br> </kbd>
       </a>
     </td>
      <td>
-      <a href="/documentation/waterUtilities.md">
+      <a href="/documentation/faultsAndErrors.md">
         <kbd> <br>FAULTS & ERRORS  <br> </kbd>
       </a>
     </td>

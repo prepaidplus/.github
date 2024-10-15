@@ -202,12 +202,12 @@ myHeaders.append("Authorization", "Basic {{ base64string }}"); // Replace with y
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
-    "meterNumber": "{{ 84456251565655 }}", // Replace with the actual meter number
+    "meterNumber": "84456251565655", // Replace with the actual meter number
     "transactionAmount": 10, // Replace with the actual transaction amount
-    "terminalId": "{{ terminal-Id }}", // Replace with the actual terminal ID
-    "clientSaleId": "{{ clientSale-Id }}", // Replace with the actual client sale ID
+    "terminalId": "web", // Replace with the actual terminal ID
+    "clientSaleId": "841055445601", // Replace with the actual client sale ID
     "outletId": "{{ outlet-Id }}", // Replace with the actual outlet ID
-    "operatorId": "{{ operator-Id }}" // Replace with the actual operator ID
+    "operatorId": "84966-01" // Replace with the actual operator ID
 });
 
 var requestOptions = {
@@ -228,12 +228,12 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialv
 {
     "code": "0",
     "custVendDetail": {
-        "name": "John Doe", // Replace with the actual name
-        "meterNumber": "04040404040", // Replace with the actual meter number
-        "amtTendered": 10 // Replace with the actual amount tendered
+        "name": "John Doe",
+        "meterNumber": "04040404040", 
+        "amtTendered": 10 
     },
-    "clientSaleId": "{{clientsale-Id}}", // Replace with the actual client sale ID
-    "transactionAmount": 10, // Replace with the actual transaction amount
+    "clientSaleId": "841055445601", 
+    "transactionAmount": 10, 
     "response": "Successful"
 }
 ```
@@ -246,8 +246,8 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialv
     "message": "OutletId is missing",
     "description": "OutletId is not provided",
     "transactionId": null,
-    "meterNumber": "04040404040", // Replace with the actual meter number
-    "amount": 10, // Replace with the actual amount
+    "meterNumber": "04040404040", 
+    "amount": 10, 
     "status": 500
 }
 ```
@@ -398,12 +398,12 @@ myHeaders.append("Authorization", "Basic {{ base64string }}"); // Replace with y
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
-    "meterNumber": "{{1234567890}}", // Example meter number
-    "transactionAmount": 100, // Example transaction amount
-    "terminalId": "{{terminal-Id}}", // Example terminal ID
-    "clientSaleId": "{{ clientsale-Id }}", // Example client sale ID
-    "outletId": "{{outlet-Id }}", // Example outlet ID
-    "operatorId": "{{ operator-Id }}" // Example operator ID
+    "meterNumber": "8515669544744", 
+    "transactionAmount": 100, // Replace with actual transaction amount
+    "terminalId": "84166444", // Replace with actual terminal ID
+    "clientSaleId": "846362626", // Replace with actual client sale ID
+    "outletId": "{{outlet-Id }}", // Replace with actual outlet ID
+    "operatorId": "8455-02" // Replace with actual operator ID
 });
 
 var requestOptions = {
@@ -424,42 +424,42 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/credit
 {
     "code": "0",
     "creditVendReceipt": {
-        "clientId": "{{client-Id}}", // Example client ID
-        "account": "{{acount}}", // Example account
-        "location": "123456", // Example location
-        "name": "John Doe", // Example name
-        "date": "2020-03-02 14:32:14", // Example date
-        "receiptNo": "{{receipt-no}}", // Example receipt number
-        "amtTendered": 100, // Example amount tendered
-        "costUnits": 50, // Example cost units
-        "standardCharge": 5, // Example standard charge
-        "governmentLevy": 2, // Example government levy
-        "vat": 10, // Example VAT
+        "clientId": "PP0000", 
+        "account": "{{ account }}",
+        "location": "123456", 
+        "name": "John Doe", 
+        "date": "2020-03-02 14:32:14", 
+        "receiptNo": "846912871", 
+        "amtTendered": 100, 
+        "costUnits": 50, 
+        "standardCharge": 5, 
+        "governmentLevy": 2, 
+        "vat": 10,
         "desc": "Credit Token",
         "tariff": "Business",
         "tariffBreakdown": [
             {
-                "units": 25, // Example units
-                "rate": 2 // Example rate
+                "units": 25, 
+                "rate": 2 
             },
             {
-                "units": 25, // Example units
-                "rate": 2 // Example rate
+                "units": 25, 
+                "rate": 2 
             }
         ],
-        "tokenUnits": 100, // Example token units
-        "meterType": "Prepaid", // Example meter type
-        "krn": "1", // Example KRN
-        "ti": "6", // Example TI
-        "meterNumber": "1234567890", // Example meter number
-        "sgc": "300000", // Example SGC
-        "keychangetoken1": "8675 7587 7584 6834", // Example key change token 1
-        "keychangetoken2": "0968 7794 1029 9035", // Example key change token 2
-        "stsCipher": "3871 0157 9312 8553 5068r" // Example STS cipher
+        "tokenUnits": 100,
+        "meterType": "Prepaid", 
+        "krn": "1",
+        "ti": "6", 
+        "meterNumber":"8515669544744", 
+        "sgc": "300000", 
+        "keychangetoken1": "8675 7587 7584 6834",
+        "keychangetoken2": "0968 7794 1029 9035", 
+        "stsCipher": "3871 0157 9312 8553 5068r" 
     },
-    "transactionId": "{{transaction-Id}}", // Example transaction ID
-    "clientSaleId": "{{clientsale-Id}}", // Example client sale ID
-    "transactionAmount": 100, // Example transaction amount
+    "transactionId": "1s1d55df5g5g5dfg5g5g5d", 
+    "clientSaleId": "846362626", 
+    "transactionAmount": 100,  
     "response": "Successful"
 }
 ```
@@ -467,7 +467,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/credit
 **Example Fault**
 ```javascript
 {
-    "code": "123", // Example error code
+    "code": "123", 
     "response": "Failure",
     "message": "MinimumMaximum amount error",
     "description": "Amount requested is either less or more than the allowed amount."
@@ -607,13 +607,13 @@ The example request and response demonstrate a LastResponse Request call and res
 ```javascript
 // Create headers
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Basic {{ base64string }}"); // Example Base64 encoded API key and password
+myHeaders.append("Authorization", "Basic {{ base64string }}"); // Replace with actual Base64 encoded API key and password
 myHeaders.append("Content-Type", "application/json");
 
 // Create request body
 var raw = JSON.stringify({
-    "clientSaleId": "{{ clientSale-Id }}", // Example client sale ID
-    "outletId": "{{ Outlet-Id }}" // Example outlet ID
+    "clientSaleId": "745843218", // Replace with actual client sale ID
+    "outletId": "{{ Outlet-Id }}" // Replace with actual outlet ID
 });
 
 // Create request options
@@ -639,32 +639,32 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/advice
 {
     "code": "0",
     "creditVendReceipt": {
-        "clientId": "{{client-id}}", // Example client ID
-        "account": "{{account}}", // Example account
-        "location": "52387", // Example location
-        "name": "DIPAMPIRI DINEO", // Example name
-        "date": "2020-03-28 13:37:12", // Example date
-        "receiptNo": "{{receipt-no}}", // Example receipt number
-        "amtTendered": 10, // Example amount tendered
-        "costUnits": 8.19, // Example cost units
-        "standardCharge": 0.43, // Example standard charge
-        "governmentLevy": 0.43, // Example government levy
-        "vat": 0.95, // Example VAT
+        "clientId": "PP000", 
+        "account": "{{ account }}", 
+        "location": "52387", 
+        "name": "DIPAMPIRI DINEO", 
+        "date": "2020-03-28 13:37:12", 
+        "receiptNo": "545582658", 
+        "amtTendered": 10, 
+        "costUnits": 8.19, 
+        "standardCharge": 0.43, 
+        "governmentLevy": 0.43, 
+        "vat": 0.95, 
         "desc": "Credit Token",
         "tariff": "Domestic",
-        "tokenUnits": "9.6kWh", // Example token units
-        "meterType": "02", // Example meter type
-        "krn": "1", // Example KRN
-        "ti": "1", // Example TI
-        "meterNumber": "94949494949", // Example meter number
-        "sgc": "200000", // Example SGC
-        "keychangetoken1": "8675 7587 7584 6834", // Example key change token 1
-        "keychangetoken2": "0968 7794 1029 9035", // Example key change token 2
-        "stsCipher": "3871 0157 9312 8553 5068" // Example STS cipher
+        "tokenUnits": "9.6kWh", 
+        "meterType": "02", 
+        "krn": "1",
+        "ti": "1", 
+        "meterNumber": "94949494949", 
+        "sgc": "200000", 
+        "keychangetoken1": "8675 7587 7584 6834", 
+        "keychangetoken2": "0968 7794 1029 9035", 
+        "stsCipher": "3871 0157 9312 8553 5068"
     },
-    "transactionId": "{{transaction-Id}}", // Example transaction ID
-    "clientSaleId": "{{clientSale-Id}}", // Example client sale ID
-    "transactionAmount": 10, // Example transaction amount
+    "transactionId": "45sdr4fr4ft5r55t5t5t", 
+    "clientSaleId": "745843218", 
+    "transactionAmount": 10, 
     "response": "Successful"
 }
 ```
