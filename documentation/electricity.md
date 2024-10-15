@@ -15,7 +15,7 @@ Vend use cases are used to describe the functionality exposed by the Vend protoc
 
 
 #### Download Postman Collection
-You can download the Postman collection for this use case <a href="/assets/electricityPostmanCollection.json" download>here</a>. 
+You can download the Postman collection for this use case [here](/assets/electricityPostmanCollection.json). <!-- Replace with the actual path to your Postman collection file --> 
 ### Use Case Actors, Responsibilities and Collaborators
 
 Table  describes use case actors, their responsibilities and collaborators:
