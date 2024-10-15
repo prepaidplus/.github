@@ -89,15 +89,17 @@ The workflow for the Trial Credit Vend process is as presented below in Table . 
 | 1        | Customer will submit a valid and complete prepaid electricity purchase request. A complete and valid request includes the meter number and the amount of electricity required in Pula (i.e. no Thebe, with minimum amount of P1). |                                                                                    |
 | 2        | The Merchant (Vending Client) then makes a valid and complete API call for prepaid electricity purchase. This call should also provide the API key of the merchant for authentication. The merchant must provide the following in addition to the information provided by the customer; TerminalID, OperatorId and ClientSaleID (The ClientSale ID uniquely identifies the transaction both on vending client and PWS). |                                                                                    |
 | 3        |                                                                        | PrepaidPlus validates the merchant API key. If valid, the transaction proceeds to subsequent steps, or else returns an API error. PrepaidPlus validates the meter number (i.e. does it fall in the format of the service provider’s meter numbers). If the meter number fails the validation, an error message is returned. PrepaidPlus also checks that the sale meets the minimum amount allowed for prepaid electricity. If the sale amount is below the permitted minimum amount, an error message is returned. PrepaidPlus checks the available balance in the Merchant account (i.e. within PrepaidPlus system) to ensure there is sufficient balance to meet the amount requested for purchase. If the balance is insufficient, an error message is returned. If all the checks above are positive, PrepaidPlus sends a request to the service provider with the customer meter number and amount. |
-| 4        | If the Merchant receives a successful response from PrepaidPlus, the customer names and purchase amount is then confirmed. NB: Merchant can now proceed with sale. |                                                                                    |
+| 4        | If the Merchant receives a successful response from PrepaidPlus, the customer names and purchase amount is then confirmed. NB: Merchant can now proceed with sale. |                                                                      
+<br>              |
 
 ### 	Trial Credit Vend Happy Path 
 
 The Trial Credit Vend use case sequence diagram is illustrated below.
 
 ![Credit Vend Happy Path](/assets/trialVendHappyPath.png)
+<br>
 
- ### TrialCreditVend Request
+ ## TrialCreditVend Request
 
 The TrialCreditVend Request is used to verify that the following are in place before generating an electricity token:
 - The meter number is valid and is the correct one the buyer intends to make purchase for, and also that the account has not been blocked.
@@ -200,12 +202,12 @@ myHeaders.append("Authorization", "Basic {{ base64string }}"); // Replace with y
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
-    "meterNumber": "{{ meterNumber }}", // Replace with the actual meter number
+    "meterNumber": "{{ 84456251565655 }}", // Replace with the actual meter number
     "transactionAmount": 10, // Replace with the actual transaction amount
-    "terminalId": "{{ terminalId }}", // Replace with the actual terminal ID
-    "clientSaleId": "{{ clientSaleId }}", // Replace with the actual client sale ID
-    "outletId": "{{ outletId }}", // Replace with the actual outlet ID
-    "operatorId": "{{ operatorId }}" // Replace with the actual operator ID
+    "terminalId": "{{ terminal-Id }}", // Replace with the actual terminal ID
+    "clientSaleId": "{{ clientSale-Id }}", // Replace with the actual client sale ID
+    "outletId": "{{ outlet-Id }}", // Replace with the actual outlet ID
+    "operatorId": "{{ operator-Id }}" // Replace with the actual operator ID
 });
 
 var requestOptions = {
@@ -230,7 +232,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialv
         "meterNumber": "04040404040", // Replace with the actual meter number
         "amtTendered": 10 // Replace with the actual amount tendered
     },
-    "clientSaleId": "1639124683", // Replace with the actual client sale ID
+    "clientSaleId": "{{clientsale-Id}}", // Replace with the actual client sale ID
     "transactionAmount": 10, // Replace with the actual transaction amount
     "response": "Successful"
 }
@@ -250,7 +252,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialv
 }
 ```
 <br>
-<br>
+
 
 ## Credit Vend Use Case
 
@@ -291,9 +293,9 @@ The Credit Vend use case sequence diagram is illustrated below.
 ![Credit Vend Happy Path](/assets/creditVendHappyPath.png)
 
 
+<br>
 
-
-####  CreditVend Request
+##  CreditVend Request
 
 The CreditVend request carries out the actual purchase based on the positive outcome of the TrialCreditVend or when used as a stand-alone. The method returns a prepaid electricity voucher.
 
@@ -398,10 +400,10 @@ myHeaders.append("Content-Type", "application/json");
 var raw = JSON.stringify({
     "meterNumber": "{{1234567890}}", // Example meter number
     "transactionAmount": 100, // Example transaction amount
-    "terminalId": "{{WebTerminal}}", // Example terminal ID
-    "clientSaleId": "{{ 5856245 }}", // Example client sale ID
-    "outletId": "{{ 145836 }}", // Example outlet ID
-    "operatorId": "{{ 123548 }}" // Example operator ID
+    "terminalId": "{{terminal-Id}}", // Example terminal ID
+    "clientSaleId": "{{ clientsale-Id }}", // Example client sale ID
+    "outletId": "{{outlet-Id }}", // Example outlet ID
+    "operatorId": "{{ operator-Id }}" // Example operator ID
 });
 
 var requestOptions = {
@@ -422,12 +424,12 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/credit
 {
     "code": "0",
     "creditVendReceipt": {
-        "clientId": "PP0000", // Example client ID
-        "account": "000000000", // Example account
+        "clientId": "{{client-Id}}", // Example client ID
+        "account": "{{acount}}", // Example account
         "location": "123456", // Example location
         "name": "John Doe", // Example name
         "date": "2020-03-02 14:32:14", // Example date
-        "receiptNo": "2468101214", // Example receipt number
+        "receiptNo": "{{receipt-no}}", // Example receipt number
         "amtTendered": 100, // Example amount tendered
         "costUnits": 50, // Example cost units
         "standardCharge": 5, // Example standard charge
@@ -455,8 +457,8 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/credit
         "keychangetoken2": "0968 7794 1029 9035", // Example key change token 2
         "stsCipher": "3871 0157 9312 8553 5068r" // Example STS cipher
     },
-    "transactionId": "G0rTNQFha5huk1M0dw", // Example transaction ID
-    "clientSaleId": "4929-01", // Example client sale ID
+    "transactionId": "{{transaction-Id}}", // Example transaction ID
+    "clientSaleId": "{{clientsale-Id}}", // Example client sale ID
     "transactionAmount": 100, // Example transaction amount
     "response": "Successful"
 }
@@ -473,7 +475,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/credit
 ```
 
 <br>
-<br>
+
 
 ## Last Response Use Case
 
@@ -507,7 +509,7 @@ The workflow for the Last Response process is as presented below in Table 3.4.
 | 3 | | PrepaidPlus receives the credit token from the prepaid electricity service provider, and sends it to the Vendor, or PrepaidPlus receives the exception message from the prepaid electricity service provider and sends it to the Vendor. |
 | 4 | The vendor prints out the Credit Vend customer receipt and hands it over to the customer. If the Credit Vend had not been successful, then the vendor prints out the exception message and continues to vend. | |
 | 5 | NB: Both PrepaidPlus and the Merchant systems keep their own data for each sale for cross-checking and cross-referencing. | |
-
+<br>
 ####  Last Response Happy Path
 The Last Response use case sequence diagram is illustrated in figure  below.
 
@@ -609,8 +611,8 @@ myHeaders.append("Content-Type", "application/json");
 
 // Create request body
 var raw = JSON.stringify({
-    "clientSaleId": "{{ 596258 }}", // Example client sale ID
-    "outletId": "{{ 9564552 }}" // Example outlet ID
+    "clientSaleId": "{{ clientSale-Id }}", // Example client sale ID
+    "outletId": "{{ Outlet-Id }}" // Example outlet ID
 });
 
 // Create request options
@@ -636,12 +638,12 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/advice
 {
     "code": "0",
     "creditVendReceipt": {
-        "clientId": "P1001", // Example client ID
-        "account": "3000550000", // Example account
+        "clientId": "{{client-id}}", // Example client ID
+        "account": "{{account}}", // Example account
         "location": "52387", // Example location
         "name": "DIPAMPIRI DINEO", // Example name
         "date": "2020-03-28 13:37:12", // Example date
-        "receiptNo": "23036135", // Example receipt number
+        "receiptNo": "{{receipt-no}}", // Example receipt number
         "amtTendered": 10, // Example amount tendered
         "costUnits": 8.19, // Example cost units
         "standardCharge": 0.43, // Example standard charge
@@ -659,8 +661,8 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/advice
         "keychangetoken2": "0968 7794 1029 9035", // Example key change token 2
         "stsCipher": "3871 0157 9312 8553 5068" // Example STS cipher
     },
-    "transactionId": "oyG4P6VEhBeJ8jLC6", // Example transaction ID
-    "clientSaleId": "3416", // Example client sale ID
+    "transactionId": "{{transaction-Id}}", // Example transaction ID
+    "clientSaleId": "{{clientSale-Id}}", // Example client sale ID
     "transactionAmount": 10, // Example transaction amount
     "response": "Successful"
 }
