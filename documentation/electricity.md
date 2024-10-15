@@ -607,13 +607,13 @@ The example request and response demonstrate a LastResponse Request call and res
 ```javascript
 // Create headers
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Basic {{ base64string }}"); // Replace with actual Base64 encoded API key and password
+myHeaders.append("Authorization", "Basic {{ base64string }}");// Replace with your base64 encoded string
 myHeaders.append("Content-Type", "application/json");
 
 // Create request body
 var raw = JSON.stringify({
     "clientSaleId": "745843218", // Replace with actual client sale ID
-    "outletId": "{{ Outlet-Id }}" // Replace with actual outlet ID
+    "outletId": "{{ outlet-Id }}" // Replace with actual outlet ID
 });
 
 // Create request options
