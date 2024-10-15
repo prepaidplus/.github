@@ -95,12 +95,12 @@ Contact the PrepaidPlus Support Department to request API access. When access is
     </td>
      <td>
       <a href="/documentation/merchantBalance.md">
-        <kbd> <br> MERCHANT BALANCE <br> </kbd>
+       <kbd> <br> MERCHANT BALANCE <br> </kbd>
       </a>
     </td>
      <td>
       <a href="/documentation/faultsAndErrors.md">
-        <kbd> <br> FAULTS & ERRORS  <br> </kbd>
+        <kbd> <br> FAULTS & ERRORS <br> </kbd>
       </a>
     </td>
   </tr>
