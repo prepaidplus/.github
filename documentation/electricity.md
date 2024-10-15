@@ -194,19 +194,18 @@ The example request and response demonstrate a TrialCreditVend Request call and 
 **Example Request**
 
 This example uses the following fields and values:
-
 ```javascript
 var myHeaders = new Headers();
 myHeaders.append("Authorization", "Basic {{ base64string }}"); // Replace with your base64 encoded string
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
-    "meterNumber": "{{04040404040}}", // Replace with the actual meter number
+    "meterNumber": "{{ meterNumber }}", // Replace with the actual meter number
     "transactionAmount": 10, // Replace with the actual transaction amount
-    "terminalId": "{{Web}}", // Replace with the actual terminal ID
-    "clientSaleId": "{{123456}}", // Replace with the actual client sale ID
-    "outletId": "{ 010202}}", // Replace with the actual outlet ID
-    "operatorId": "{{0202554}}" // Replace with the actual operator ID
+    "terminalId": "{{ terminalId }}", // Replace with the actual terminal ID
+    "clientSaleId": "{{ clientSaleId }}", // Replace with the actual client sale ID
+    "outletId": "{{ outletId }}", // Replace with the actual outlet ID
+    "operatorId": "{{ operatorId }}" // Replace with the actual operator ID
 });
 
 var requestOptions = {
