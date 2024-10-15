@@ -510,6 +510,7 @@ The workflow for the Last Response process is as presented below in Table 3.4.
 | 4 | The vendor prints out the Credit Vend customer receipt and hands it over to the customer. If the Credit Vend had not been successful, then the vendor prints out the exception message and continues to vend. | |
 | 5 | NB: Both PrepaidPlus and the Merchant systems keep their own data for each sale for cross-checking and cross-referencing. | |
 <br>
+
 ####  Last Response Happy Path
 The Last Response use case sequence diagram is illustrated in figure  below.
 
