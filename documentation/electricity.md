@@ -203,10 +203,10 @@ myHeaders.append("Content-Type", "application/json");
 var raw = JSON.stringify({
     "meterNumber": "{{04040404040}}", // Replace with the actual meter number
     "transactionAmount": 10, // Replace with the actual transaction amount
-    "terminalId": "Web", // Replace with the actual terminal ID
-    "clientSaleId": "{{ 123456 }}", // Replace with the actual client sale ID
-    "outletId": "{{ 010202 }}", // Replace with the actual outlet ID
-    "operatorId": "{{ 0202554 }}" // Replace with the actual operator ID
+    "terminalId": "{{Web}}", // Replace with the actual terminal ID
+    "clientSaleId": "{{123456}}", // Replace with the actual client sale ID
+    "outletId": "{ 010202}}", // Replace with the actual outlet ID
+    "operatorId": "{{0202554}}" // Replace with the actual operator ID
 });
 
 var requestOptions = {
@@ -399,7 +399,7 @@ myHeaders.append("Content-Type", "application/json");
 var raw = JSON.stringify({
     "meterNumber": "{{1234567890}}", // Example meter number
     "transactionAmount": 100, // Example transaction amount
-    "terminalId": "WebTerminal", // Example terminal ID
+    "terminalId": "{{WebTerminal}}", // Example terminal ID
     "clientSaleId": "{{ 5856245 }}", // Example client sale ID
     "outletId": "{{ 145836 }}", // Example outlet ID
     "operatorId": "{{ 123548 }}" // Example operator ID
