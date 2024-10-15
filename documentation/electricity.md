@@ -95,7 +95,7 @@ The workflow for the Trial Credit Vend process is as presented below in Table . 
 
 The Trial Credit Vend use case sequence diagram is illustrated below.
 
-![Credit Vend Happy Path](/assets/creditVendHappyPath.png)
+![Credit Vend Happy Path](/assets/trialVendHappyPath.png)
 
  ### TrialCreditVend Request
 
@@ -288,7 +288,7 @@ The sale is confirmed in both systems, unless there is an error that warrants a 
 ####  Credit Vend Happy Path
 The Credit Vend use case sequence diagram is illustrated below.
 
-![Credit Vend Happy Path](/assets/creditVendHappyPath.png.png)
+![Credit Vend Happy Path](/assets/creditVendHappyPath.png)
 
 
 
