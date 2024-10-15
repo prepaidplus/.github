@@ -60,42 +60,47 @@ Production API keys should be kept confidential and only stored on your own serv
 
 #### Obtain PrepaidPlus API Access
 
-Contact the PrepaidPlus Support Department to request API access. When access is granted, you will receive an API namespace, an API key, and password. These are the pieces of information required for API access. The API key and password should be Base64 Encoded in an auth object as shown in Table 2.2 below. The resulting Base64 string should be sent in the Authorization header of every request.
+Contact the PrepaidPlus Support Department to request API access. When access is granted, you will receive an API namespace, an API key, and password. These are the pieces of information required for API access. The API key and password should be Base64 Encoded in an auth object as shown in Table  below. The resulting Base64 string should be sent in the Authorization header of every request.
 
 | API Point  | API Key             | Service information (generic domain)       |
 |------------|---------------------|--------------------------------------------|
-| Development| [Your Development Key] |             |
-| Production | [Your Production Key] |                                            |
+| Development| {{ Your Development Key }} |             |
+| Production | {{ Your Production Key }} |                                            |
 
 | Type       | Value               |                                                                 |
 |------------|---------------------|-----------------------------------------------------------------|
-| ApiKey     | [Your API Key]      | Base64Encode (_key:password } i.e Base64Encode (api_key:password) |
-| Password   | [Your Password]     |                                                                 |
-| Base64     | [Your Base64 String]|                                                                 |
+| ApiKey     | {{ api_key }}      | Base64Encode ( {{_api_key }} : {{ password }} )|
+| Password   | {{ password }}     |                                                                 |
+| Base64     |  {{ base64string }}|                                                                 |
 
-**Note:** Semicolon between `apiKey` and `password` is important.
+**Note:** Colon between `apiKey` and `password` is important.
 
 ## SERVICES 
 <table>
   <tr>
-    <td>
-      <a href="/documentation/waterUtilities.md">
-        <kbd> <br> WATER <br> </kbd>
-      </a>
-    </td>
     <td>
       <a href="/documentation/electricity.md">
         <kbd> <br> ELECTRICITY <br> </kbd>
       </a>
     </td>
     <td>
-      <a href="/documentation/multichoice .md">
+      <a href="/documentation/multichoice.md">
         <kbd> <br> MULTICHOICE <br> </kbd>
       </a>
     </td>
     <td>
       <a href="/documentation/airtime.md">
         <kbd> <br> AIRTIME <br> </kbd>
+      </a>
+    </td>
+     <td>
+      <a href="/documentation/merchantBalance.md">
+       <kbd> <br> MERCHANT BALANCE <br> </kbd>
+      </a>
+    </td>
+     <td>
+      <a href="/documentation/faultsAndErrors.md">
+        <kbd> <br> FAULTS & ERRORS <br> </kbd>
       </a>
     </td>
   </tr>
