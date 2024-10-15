@@ -201,7 +201,7 @@ myHeaders.append("Authorization", "Basic {{ base64string }}"); // Replace with y
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
-    "meterNumber": "04040404040", // Replace with the actual meter number
+    "meterNumber": "{{04040404040}}", // Replace with the actual meter number
     "transactionAmount": 10, // Replace with the actual transaction amount
     "terminalId": "Web", // Replace with the actual terminal ID
     "clientSaleId": "{{ 123456 }}", // Replace with the actual client sale ID
@@ -397,7 +397,7 @@ myHeaders.append("Authorization", "Basic {{ base64string }}"); // Replace with y
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
-    "meterNumber": "1234567890", // Example meter number
+    "meterNumber": "{{1234567890}}", // Example meter number
     "transactionAmount": 100, // Example transaction amount
     "terminalId": "WebTerminal", // Example terminal ID
     "clientSaleId": "{{ 5856245 }}", // Example client sale ID
