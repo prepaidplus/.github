@@ -14,14 +14,15 @@ Vend use cases are used to describe the functionality exposed by the Vend protoc
 - Vend Server
 
 #### Download Postman Collection
-You can download the Postman collection for this use case [here](/assets/electricityPostmancollection.json). <!-- Replace with the actual path to your Postman collection file -->
+#### Download Postman Collection
+You can download the Postman collection for this use case <a href="/assets/electricityPostmanCollection.json" download>here</a>. 
 ### Use Case Actors, Responsibilities and Collaborators
 
-Table 3.1 describes use case actors, their responsibilities and collaborators:
+Table  describes use case actors, their responsibilities and collaborators:
 
 | Use case actor | Responsibilities                                                                 | Collaborators                           |
 |----------------|----------------------------------------------------------------------------------|-----------------------------------------|
-| Customer       | - Initiates customer use cases.                                                  | - Vending Operator – ()         |
+| Customer       | - Initiates customer use cases.                                                  | - Vending Operator         |
 |                | - Provides transaction information.                                              |                                         |
 |                | - Tenders payment.                                                               |                                         |
 |                | - Receives requested token receipt.                                              |                                         |
@@ -94,7 +95,7 @@ The workflow for the Trial Credit Vend process is as presented below in Table . 
 
 The Trial Credit Vend use case sequence diagram is illustrated below.
 
-![Credit Vend Happy Path](/assets/trial%20vand%20happy%20path.png)
+![Credit Vend Happy Path](/assets/trialVandHappyPath.png)
 
  ### TrialCreditVend Request
 
@@ -286,7 +287,7 @@ The sale is confirmed in both systems, unless there is an error that warrants a 
 ####  Credit Vend Happy Path
 The Credit Vend use case sequence diagram is illustrated below.
 
-![Credit Vend Happy Path](/assets/credit%20vand%20happy%20path.png)
+![Credit Vend Happy Path](/assets/creditVandHappyPath.png)
 
 
 
@@ -508,7 +509,7 @@ The Last Response use case sequence diagram is illustrated in figure  below.
 
 **Fig: Last Response Happy Path**
 
-![Last Response Happy Path](/assets/lastResponsehappyPath.png)
+![Last Response Happy Path](/assets/lastResponseHappyPath.png)
 
 
 ####  LastResponse Request
