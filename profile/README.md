@@ -79,11 +79,6 @@ Contact the PrepaidPlus Support Department to request API access. When access is
 <table>
   <tr>
     <td>
-      <a href="/documentation/waterUtilities.md">
-        <kbd> <br> WATER <br> </kbd>
-      </a>
-    </td>
-    <td>
       <a href="/documentation/electricity.md">
         <kbd> <br> ELECTRICITY <br> </kbd>
       </a>
@@ -96,6 +91,16 @@ Contact the PrepaidPlus Support Department to request API access. When access is
     <td>
       <a href="/documentation/airtime.md">
         <kbd> <br> AIRTIME <br> </kbd>
+      </a>
+    </td>
+     <td>
+      <a href="/documentation/waterUtilities.md">
+        <kbd> <br>MERCHANT BALANCE <br> </kbd>
+      </a>
+    </td>
+     <td>
+      <a href="/documentation/waterUtilities.md">
+        <kbd> <br>FAULTS & ERRORS  <br> </kbd>
       </a>
     </td>
   </tr>

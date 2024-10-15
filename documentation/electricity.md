@@ -95,7 +95,7 @@ The workflow for the Trial Credit Vend process is as presented below in Table . 
 
 The Trial Credit Vend use case sequence diagram is illustrated below.
 
-![Credit Vend Happy Path](/assets/trialVandHappyPath.png)
+![Credit Vend Happy Path](/assets/creditVendHappyPath.png)
 
  ### TrialCreditVend Request
 
@@ -197,7 +197,7 @@ This example uses the following fields and values:
 
 ````javascript
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Basic base64string"); // Replace with your base64 encoded string
+myHeaders.append("Authorization", "Basic {{ base64string }}"); // Replace with your base64 encoded string
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
@@ -205,7 +205,7 @@ var raw = JSON.stringify({
     "transactionAmount": 10, // Replace with the actual transaction amount
     "terminalId": "Web", // Replace with the actual terminal ID
     "clientSaleId": "12345678", // Replace with the actual client sale ID
-    "outletId": "0000-01", // Replace with the actual outlet ID
+    "outletId": "{{ 123-00 }}", // Replace with the actual outlet ID, // Replace with the actual outlet ID
     "operatorId": "example-01", // Replace with the actual operator ID
 });
 
@@ -249,7 +249,8 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialv
     	  "status": 500
 }
 ````
-
+<br>
+<br>
 
 ## Credit Vend Use Case
 
@@ -287,7 +288,7 @@ The sale is confirmed in both systems, unless there is an error that warrants a 
 ####  Credit Vend Happy Path
 The Credit Vend use case sequence diagram is illustrated below.
 
-![Credit Vend Happy Path](/assets/creditVandHappyPath.png)
+![Credit Vend Happy Path](/assets/creditVendHappyPath.png.png)
 
 
 
@@ -471,6 +472,10 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/credit
     "description": "Amount requested is either less or more than the allowed amount."
 }
 ```
+
+<br>
+<br>
+
 ## Last Response Use Case
 
 #### Last Response Description
@@ -511,8 +516,9 @@ The Last Response use case sequence diagram is illustrated in figure  below.
 
 ![Last Response Happy Path](/assets/lastResponseHappyPath.png)
 
+<br>
 
-####  LastResponse Request
+##  LastResponse Request
 
 This method is called subsequent to an ongoing CreditVend Request network timeout/connection failure or an exception. Its purpose is to check if a voucher had been successfully sold prior to abandoning the sale. In an event that the failed CreditVend Request had resulted in a successful sale, the voucher is retrieved and returned for printing, otherwise the sale is abandoned.
 
