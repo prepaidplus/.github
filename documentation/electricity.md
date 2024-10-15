@@ -195,7 +195,7 @@ The example request and response demonstrate a TrialCreditVend Request call and 
 
 This example uses the following fields and values:
 
-````javascript
+```javascript
 var myHeaders = new Headers();
 myHeaders.append("Authorization", "Basic {{ base64string }}"); // Replace with your base64 encoded string
 myHeaders.append("Content-Type", "application/json");
@@ -204,9 +204,9 @@ var raw = JSON.stringify({
     "meterNumber": "04040404040", // Replace with the actual meter number
     "transactionAmount": 10, // Replace with the actual transaction amount
     "terminalId": "Web", // Replace with the actual terminal ID
-    "clientSaleId": "12345678", // Replace with the actual client sale ID
-    "outletId": "{{ 123-00 }}", // Replace with the actual outlet ID, // Replace with the actual outlet ID
-    "operatorId": "example-01", // Replace with the actual operator ID
+    "clientSaleId": "{{ 123456 }}", // Replace with the actual client sale ID
+    "outletId": "{{ 010202 }}", // Replace with the actual outlet ID
+    "operatorId": "{{ 0202554 }}" // Replace with the actual operator ID
 });
 
 var requestOptions = {
@@ -220,10 +220,10 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialv
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-````
+```
 
 **Example Response**
-````javascript
+```javascript
 {
     "code": "0",
     "custVendDetail": {
@@ -235,20 +235,21 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialv
     "transactionAmount": 10, // Replace with the actual transaction amount
     "response": "Successful"
 }
-````
+```
+
 **Example Fault**
-````javascript
+```javascript
 {
-         "code":"103",
-         "response":"Failure",
-         "message":"OutletId is missing",
-         "description": "OutletId is not provided ",
-    	 "transactionId": null,
-    	 "meterNumber": "04040404040",
-    	  "amount": 10,
-    	  "status": 500
+    "code": "103",
+    "response": "Failure",
+    "message": "OutletId is missing",
+    "description": "OutletId is not provided",
+    "transactionId": null,
+    "meterNumber": "04040404040", // Replace with the actual meter number
+    "amount": 10, // Replace with the actual amount
+    "status": 500
 }
-````
+```
 <br>
 <br>
 
@@ -390,19 +391,18 @@ The example request and response demonstrate a CreditVend Request call and respo
 **Example Request**
 
 This example uses the following fields and values:
-````javascript
-
+```javascript
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Basic base64string"); // Replace with your base64 encoded string
+myHeaders.append("Authorization", "Basic {{ base64string }}"); // Replace with your base64 encoded string
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
     "meterNumber": "1234567890", // Example meter number
     "transactionAmount": 100, // Example transaction amount
     "terminalId": "WebTerminal", // Example terminal ID
-    "clientSaleId": "example-client-sale-id", // Example client sale ID
-    "outletId": "example-outlet-id", // Example outlet ID
-    "operatorId": "example-operator-id" // Example operator ID
+    "clientSaleId": "{{ 5856245 }}", // Example client sale ID
+    "outletId": "{{ 145836 }}", // Example outlet ID
+    "operatorId": "{{ 123548 }}" // Example operator ID
 });
 
 var requestOptions = {
@@ -416,10 +416,10 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/credit
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-```````
+```
 
 **Example Response**
-````javascript
+```javascript
 {
     "code": "0",
     "creditVendReceipt": {
@@ -461,7 +461,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/credit
     "transactionAmount": 100, // Example transaction amount
     "response": "Successful"
 }
-`````
+```
 
 **Example Fault**
 ```javascript
@@ -601,16 +601,17 @@ The errors above are faults, which are fatal, call-level errors. When a fault oc
 **LastResponse Request Examples**
 
 The example request and response demonstrate a LastResponse Request call and response.
+
 ```javascript
 // Create headers
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Basic base64string"); // Example Base64 encoded API key and password
+myHeaders.append("Authorization", "Basic {{ base64string }}"); // Example Base64 encoded API key and password
 myHeaders.append("Content-Type", "application/json");
 
 // Create request body
 var raw = JSON.stringify({
-    "clientSaleId": "112354825", // Example client sale ID
-    "outletId": "4900-01" // Example outlet ID
+    "clientSaleId": "{{ 596258 }}", // Example client sale ID
+    "outletId": "{{ 9564552 }}" // Example outlet ID
 });
 
 // Create request options
@@ -629,7 +630,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/advice
 ```
 
 **Example Response**
-This example above makes a request for `clientSaleId: 3416` which for purposes of illustration had timed out, whilst the call had resulted in a successful sale.
+
 
 **Response**
 ```javascript
@@ -664,17 +665,15 @@ This example above makes a request for `clientSaleId: 3416` which for purposes o
     "transactionAmount": 10, // Example transaction amount
     "response": "Successful"
 }
-````
-This response would close off a successful last response sale.
+```
 
-Example Fault
 
-````javascript
+**Example Fault**
+```javascript
 {
-"code": "02"
-"response": "Failure",
-"message": "Invalid API Key",
-"description": "Unable to authenticate supplied API key."
+    "code": "02",
+    "response": "Failure",
+    "message": "Invalid API Key",
+    "description": "Unable to authenticate supplied API key."
 }
-
-````
+```
