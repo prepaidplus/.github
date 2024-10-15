@@ -60,7 +60,7 @@ Production API keys should be kept confidential and only stored on your own serv
 
 #### Obtain PrepaidPlus API Access
 
-Contact the PrepaidPlus Support Department to request API access. When access is granted, you will receive an API namespace, an API key, and password. These are the pieces of information required for API access. The API key and password should be Base64 Encoded in an auth object as shown in Table 2.2 below. The resulting Base64 string should be sent in the Authorization header of every request.
+Contact the PrepaidPlus Support Department to request API access. When access is granted, you will receive an API namespace, an API key, and password. These are the pieces of information required for API access. The API key and password should be Base64 Encoded in an auth object as shown in Table  below. The resulting Base64 string should be sent in the Authorization header of every request.
 
 | API Point  | API Key             | Service information (generic domain)       |
 |------------|---------------------|--------------------------------------------|
