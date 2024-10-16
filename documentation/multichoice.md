@@ -90,7 +90,7 @@ The ConfirmSmartcard call requires the following fields:
 
 | Argument        | Type   | Description                                                                                                      |
 |-----------------|--------|------------------------------------------------------------------------------------------------------------------|
-| apiKey          | string | **Mandatory:** Secret API Key authenticates the merchant. Passed in authorization header {{Base 64 encoded}} as part of Basic Authentication scheme. |
+| apiKey          | string | **Mandatory:** Secret API Key authenticates the merchant. Passed in authorization header {{ Base 64 encoded }} as part of Basic Authentication scheme. |
 | password        | string | **Mandatory:** Merchant password. Passed in authorization header as part of Basic Authentication scheme.         |
 | clientSaleId    | string | **Mandatory:** This is a unique client supplied reference number. Used to identify request. Supplied by: Caller.  |
 | smartcardNumber | string | **Mandatory:** This is the customer smartcard number.                                                            |
