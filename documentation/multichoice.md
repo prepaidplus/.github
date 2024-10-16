@@ -24,6 +24,7 @@ Table  describes use case actors, their responsibilities and collaborators.
 | PrepaidPlus Server | • Authenticates the Multichoice Payment Server. <br> • Compiles and sends MultiChoice DSTV request messages to Multichoice payment server. <br> • Receives and formats MultiChoice DSTV response messages from the Multichoice payment server. | • Multichoice DSTV Server |
 | Multichoice DSTV Payment Server | • Authenticates the MultiChoice DSTV clients. <br> • Complies with an appropriate MultiChoice DSTV response message based on its application business logic. <br> • Responds with a fault response message, if required. | • MultiChoice DSTV clients |
 <br>
+
 ##  Multichoice DSTV Smartcard Confirmation Use Case
 
 #####  Multichoice DSTV Smartcard Confirmation Description
