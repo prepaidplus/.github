@@ -216,7 +216,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/trialvend", r
 ````
 <br>
 
-## Multichoice DSTV Smartcard Payment Use Case
+### Multichoice DSTV Smartcard Payment Use Case
 
 #### DSTV Smartcard Payment Description
 
@@ -251,7 +251,7 @@ The workflow for the DSTV Smartcard Payment process is as presented below.
 | 3 | | PrepaidPlus sends the customer payment details with a reference number from Multichoice DSTV to  POS. |
 | 4 | POS prints the payment receipt details. | |
 
-#### DSTV Smartcard Payment Happy Path
+<br>
 
 The DSTV Smartcard Payment use case sequence diagram is illustrated below.
 
@@ -261,7 +261,7 @@ The DSTV Smartcard Payment use case sequence diagram is illustrated below.
 
 <br>
 
-## Subscription Payment
+### Subscription Payment
 
 Carries out the actual payment based on the positive outcome of the ConfirmSmartcard. The method returns a payment confirmation receipt.
 
@@ -375,17 +375,17 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/creditvend", 
 
 ````javascript
 {
-   "code": "0",
-"transaction_reference": 101269,
-   "confirmation_number": "245877",
-   "customer_name": "JE",
-   "customer_surname": "Smith",
-   "customer_number": 98765432,
-   "smartcard_number": "1234567890",
+    "code": "0",
+    "transaction_reference": 101269,
+    "confirmation_number": "245877",
+    "customer_name": "JE",
+    "customer_surname": "Smith",
+    "customer_number": 98765432,
+    "smartcard_number": "1234567890",
     "amount": "100.00",
     "subscribed_services": [
-        "DStv Compact Plus Bouquet IS20",
-        "DStv HD Compact Plus Bouquet IS20"
+    "DStv Compact Plus Bouquet IS20",
+    "DStv HD Compact Plus Bouquet IS20"
     ],
     "transactionId": "8aTRULd0Z215tHw8ybKR",
     "clientSaleId": "1639103549",
@@ -401,9 +401,9 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/creditvend", 
 ````javascript
 {
    "code": "06",
-"response": "Failure",
+   "response": "Failure",
    "description": "An unexpected exception has occurred..",
-    "transactionId": null,
+   "transactionId": null,
    "clientSaleId": "1639103549",
    "smartcardNumber": "1234567890",
    "amount": 100,
@@ -413,7 +413,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/creditvend", 
 
 <br>
 
-## Multichoice Last Response Use Case
+### Multichoice Last Response Use Case
 
 The Vendor aims to confirm the status of a potentially successful payment after a failed or incomplete Smartcard Payment Request. The PrepaidPlus server checks whether the transaction was processed, retrieves the payment receipt (if successful), and returns it for final confirmation or abandonment.
 
