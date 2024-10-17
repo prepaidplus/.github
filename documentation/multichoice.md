@@ -9,7 +9,7 @@ PWS Multichoice DSTV use cases are used to describe the functionality exposed by
 
 #### Download Postman Collection
 
-You can download the Postman collection for this use case <a href="/assets/dstvPostmanCollection.postman_collection.json" download>here</a>. <!-- Replace with the actual path to your Postman collection file -->
+You can download the Postman collection for this use case <a href="/assets/dstvPostmanCollectionPostmanCollection.json" download>here</a>. <!-- Replace with the actual path to your Postman collection file -->
 
 ### Use case actors, responsibilities and collaborators
 
