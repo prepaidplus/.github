@@ -75,7 +75,7 @@ The DSTV Smartcard Confirmation Vend use case sequence diagram is illustrated be
 
 <br>
 
-## Multichoice DSTV Methods
+## Multichoice DSTV 
 
 #### Confirm Smartcard
 
