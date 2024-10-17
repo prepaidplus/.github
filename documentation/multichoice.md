@@ -69,15 +69,11 @@ The workflow for the DSTV Smartcard Confirmation process is as presented below .
 
 The DSTV Smartcard Confirmation Vend use case sequence diagram is illustrated below.
 
-**Fig : DSTV Smartcard Confirmation Happy Path**
-
 ![dstvSmartcardHappyPath](/assets/dstvSmartConfirmationHappyPath.png)
 
 <br>
 
-## Multichoice DSTV 
-
-#### Confirm Smartcard
+###  DSTV Confirm Smartcard
 
 The ConfirmSmartcard Request is used to verify that the following are in place before accepting payment towards smartcard linked DSTV:
 
