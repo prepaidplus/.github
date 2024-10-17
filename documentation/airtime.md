@@ -59,7 +59,7 @@ The prepaid airtime credit request use case sequence diagram is illustrated belo
 
 **Fig: Prepaid Airtime Credit Request Happy Path**
 
-![Credit Vend Happy Path](/assets/airtimeHappypath.png)
+![ Prepaid Airtime Path](/assets/airtimeHappypath.png)
 
 
 
