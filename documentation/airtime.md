@@ -63,7 +63,7 @@ The prepaid airtime credit request use case sequence diagram is illustrated belo
 
 
 
-### Prepaid Airtime Methods
+### Prepaid Airtime
 
 ####  Airtime Credit Request
 
