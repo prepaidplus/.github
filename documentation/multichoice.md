@@ -19,10 +19,10 @@ Table  describes use case actors, their responsibilities and collaborators.
 
 | Use case actor | Responsibilities | Collaborators |
 |----------------|------------------|---------------|
-| Customer | • Initiates customer use cases. <br> • Provides transaction information. <br> • Tenders payment. <br> • Receives payment receipt. | • Vending Operator  |
-| Vending Operator  | • Verifies customer information. <br> • Submits vending requests on behalf of customer. <br> • Performs operator specific tasks. <br> • Hands payment receipts to customers. <br> • Handles customer queries. | • PrepaidPlus Server |
-| PrepaidPlus Server | • Authenticates the Multichoice Payment Server. <br> • Compiles and sends MultiChoice DSTV request messages to Multichoice payment server. <br> • Receives and formats MultiChoice DSTV response messages from the Multichoice payment server. | • Multichoice DSTV Server |
-| Multichoice DSTV Payment Server | • Authenticates the MultiChoice DSTV clients. <br> • Complies with an appropriate MultiChoice DSTV response message based on its application business logic. <br> • Responds with a fault response message, if required. | • MultiChoice DSTV clients |
+| Customer | - Initiates customer use cases. <br> - Provides transaction information. <br> - Tenders payment. <br> - Receives payment receipt. | - Vending Operator  |
+| Vending Operator  | - Verifies customer information. <br> - Submits vending requests on behalf of customer. <br> - Performs operator specific tasks. <br> - Hands payment receipts to customers. <br> - Handles customer queries. | - PrepaidPlus Server |
+| PrepaidPlus Server | - Authenticates the Multichoice Payment Server. <br> - Compiles and sends MultiChoice DSTV request messages to Multichoice payment server. <br> - Receives and formats MultiChoice DSTV response messages from the Multichoice payment server. | - Multichoice DSTV Server |
+| Multichoice DSTV Payment Server | - Authenticates the MultiChoice DSTV clients. <br> - Complies with an appropriate MultiChoice DSTV response message based on its application business logic. <br> - Responds with a fault response message, if required. | - MultiChoice DSTV clients |
 
 <br>
 
@@ -72,6 +72,8 @@ The DSTV Smartcard Confirmation Vend use case sequence diagram is illustrated be
 **Fig : DSTV Smartcard Confirmation Happy Path**
 
 ![dstvSmartcardHappyPath](/assets/dstvSmartConfirmationHappyPath.png)
+
+<br>
 
 ## Multichoice DSTV Methods
 
@@ -163,14 +165,14 @@ This example uses the following fields and values:
 
 ````javascript
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Basic {{ base64string }}");// Replace with your base64 encoded string
+myHeaders.append("Authorization", "Basic {{ base64string }}");//Replace with your base64 encoded string
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
-    "clientSaleId": "1234567890",// Replace with the actual clientSaleId
-    "smartcardNumber": "1234567890",// Replace with the actual smartcardNumber
-    "operatorId": "Web",// Replace with the actual operatorId
-    "outletId": "{{ outlet-Id }}", // Replace with the actual outletId
+    "clientSaleId": "1234567890",//Replace with the actual clientSaleId
+    "smartcardNumber": "1234567890",//Replace with the actual smartcardNumber
+    "operatorId": "Web",//Replace with the actual operatorId
+    "outletId": "{{ outlet-Id }}", //Replace with the actual outletId
 });
 
 var requestOptions = {
@@ -202,6 +204,20 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/trialvend", r
 }
 ````
 
+**Example Fault**
+
+
+````javascript
+{
+    "code": "06",
+    "response": "Failure",
+    "message": "Unexpected Error",
+    "description": "An unexpected exception has occurred..",
+    "transactionId": null,
+    "clientSaleId": "1234567890",
+    "status": 500
+}
+````
 <br>
 
 ## Multichoice DSTV Smartcard Payment Use Case
@@ -247,9 +263,9 @@ The DSTV Smartcard Payment use case sequence diagram is illustrated below.
 
 ![Smartcard Payment Happy Pathh](/assets/smartCardpaymentHappyPath.png)
 
-### Multichoice DSTV Methods
+<br>
 
-#### Subscription Payment
+## Subscription Payment
 
 Carries out the actual payment based on the positive outcome of the ConfirmSmartcard. The method returns a payment confirmation receipt.
 
@@ -434,9 +450,8 @@ If no payment was processed, PrepaidPlus returns an error indicating that the tr
 
 The request successfully returns payment confirmation, including the customer’s name, amount paid, and transaction details. The cashier prints the receipt and the transaction is closed.
 
-### Multichoice DSTV Methods
 
-#### Multichoice DSTV LastResponse
+### Multichoice DSTV LastResponse
 
 This method is called subsequent to an ongoing Smartcard Payment Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the payment. In an event that the failed Smartcard Payment Request had resulted in a successful payment, the payment receipt is retrieved and returned for printing, otherwise the payment is abandoned.
 
@@ -505,12 +520,12 @@ The example request and response demonstrate a LastResponse Request call and res
 
 ````javascript
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Basic {{ base64string }}");// Replace with your base64 encoded string
+myHeaders.append("Authorization", "Basic {{ base64string }}");//Replace with your base64 encoded string
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
   "clientSaleId": "1639111159"
-"outletId": "{{ outlet-Id }}"// Replace with the actual outletId
+"outletId": "{{ outlet-Id }}"//Replace with the actual outletId
 });
 
 var requestOptions = {
