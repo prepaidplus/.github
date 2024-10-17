@@ -11,7 +11,7 @@ PWS Multichoice DSTV use cases are used to describe the functionality exposed by
 
 You can download the Postman collection for this use case <a href="/assets/dstvPostmanCollectionPostmanCollection.json" download>here</a>. <!-- Replace with the actual path to your Postman collection file -->
 
-### Use case actors, responsibilities and collaborators
+#### Use case actors, responsibilities and collaborators
 
 Table  describes use case actors, their responsibilities and collaborators.
 
@@ -26,7 +26,7 @@ Table  describes use case actors, their responsibilities and collaborators.
 
 <br>
 
-## Multichoice DSTV Smartcard Confirmation Use Case
+### Multichoice DSTV Smartcard Confirmation Use Case
 
 #### Multichoice DSTV Smartcard Confirmation Description
 
@@ -521,7 +521,7 @@ myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
   "clientSaleId": "1639111159"
-"outletId": "{{ outlet-Id }}"//Replace with the actual outletId
+  "outletId": "{{ outlet-Id }}"//Replace with the actual outletId
 });
 
 var requestOptions = {
@@ -543,7 +543,7 @@ This example above makes a request for clientSaleId:12349876 which for purposes 
 
 ````javascript
 {
-"code": "0",
+     "code": "0",
      "amount": "100.00",
      "customer_number": 98765432,
      "smartcard_number": "1234567890",
