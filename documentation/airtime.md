@@ -150,8 +150,61 @@ This example uses the following fields and values:
 
 ````javascript
 
-````
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Basic{{ base64string }}");//Replace with your base64 encoded string
+myHeaders.append("Content-Type", "application/json");
 
+var raw = JSON.stringify({
+  "clientSaleId": "1639124683",//Replace with your actual clientSaleId
+  "provider": "Orange",//Replace with your actual provider
+  "denomination": 10,//Replace with your actual denomination
+  "terminalId": "Web",//Replace with your actual terminalId
+  "outletId": "{{ outlet-Id }}",//Replace with your actual outletId
+  "operatorId": "fino"//Replace with your actual operatorId
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-voucher/creditvend", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+````
+**Example Response**
+
+````javascript 
+{
+"code": "0",
+    	"airtimeID": 101309,
+    	"provider": "ORANGE",
+    	"response": "Successful",
+    	"transactionAmount": 10,
+    	"transactionDateTime": "2021-12-10T09:47:48.325Z",
+    	"transactionId": "vU0FyUW4kSGVIwBKTsce",
+    	"voucherSerialNumber": "1000227",
+    	"voucherPinNumber": " 9917 28",
+    	"product": "Orange P10",
+    	"clientSaleId": "1639124683"
+}
+````
+**Example Fault**
+````javascript
+
+{
+"code": "211"
+"clientSaleId": "16391111599"
+"response": "Failure",
+"message": " Airtime Vending Denied ",
+"description": "Merchant not setup to sell Airtime."
+}
+
+````
 ####  Airtime LastResponse
 
 This method is called subsequent to an ongoing Airtime Purchase Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the payment. In an event that the failed Airtime Purchase Request had resulted in a successful payment, the payment receipt is retrieved and returned for printing, otherwise the payment is abandoned.
@@ -220,6 +273,61 @@ The example request and response demonstrate a LastResponse Request call and res
 **Example Request**
 
 This example uses the following fields and values:
+
+````javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Basic {{ base64string }}");//Replace with your base64 encoded string
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+"clientSaleId": "1639111159"//Replace with the actual clientSaleId
+"outletId": "{{ outlet-Id }}" //Replace with the actual outletId
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-pinless/advice", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+````
+**Example Response**
+This example above makes a request for clientSaleId:889898989889 which for purposes of illustration had timed out, whilst the call had resulted in a successful sale.
+
+````javascript
+{
+      "code": "0",
+    	"airtimeID": 102611,
+    	"provider": "ORANGE",
+    	"transactionAmount": 10,
+    	"voucherPinNumber": "914 446",
+    	"voucherSerialNumber": "1000228",
+    	"clientSaleId": "889898989889",
+    	"transactionId": "tiGNZ2gUCiW4JKJpZ4b0",
+    	"transactionStatus": "Successful",
+    	"saleDate": "2022-01-20 13:43:52",
+    	"transactionDateTime": "2022-01-20 13:52:59"
+}
+````
+This response would close off a successful last response payment.
+
+**Example Fault**
+
+````javascript
+{	
+"code": "209"
+"clientSaleId": "16391111599"
+"response: "Failure",
+"message": " Sale not found.",
+"description": " Sale not found."
+}
+````
 
 <br>
 
@@ -345,9 +453,64 @@ The errors above are faults, which are fatal, call-level errors. When a fault oc
 
 The example request and response demonstrate a Pinless Airtime Credit Request call and response. The example query demonstrates the use of the 'Authorization' header which uses Basic Authentication. The string passed is  (Base 64 encoded) APIkey as user and merchant password.
 
-**Example Request**
 
 ````javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Basic {{ base64string }}");//Replace with your base64 encoded string
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+    "clientSaleId": "1656881928",//Replace with the actual clientSaleId
+    "provider": "Mascom Pinless",//Replace with the actual provider
+    "transactionAmount": 10,//Replace with the actual transactionAmount
+    "cellNumber": "75636865",//Replace with the actual cellNumber
+    "merchantName": "Fino",//Replace with the actual merchantName
+    "outletName": "Lesedi",//Replace with the actual outletName
+    "operatorId": "Lesedi",//Replace with the actual operatorId
+    "terminalId": "Web",//Replace with the actual terminalId
+    "outletId": "{{ outlet-Id }}"//Replace with the actual outletId
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-pinless/creditvend", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+````
+
+**Example Response**
+
+````javascript
+{
+        "code": "0",
+    		"transaction_reference": 467331585,
+    		"provider": "Mascom Pinless",
+    		"providerReference": "2607331585",
+    		"msisdn": "75636865",
+    		"amount": 10,
+    		"clientSaleId": "1656881928",
+    		"transactionDateTime": "2022-07-12T06:44:38.440Z",
+    		"response": "Successful",
+    		"transactionId": "RcgBZcAyiWHCGVJt5h38"
+}
+````
+
+**Example Fault**
+
+````javascript
+{
+"code": "211"
+"clientSaleId": "16391111599"
+"response": "Failure",
+"message": " Airtime Vending Denied ",
+"description": "Merchant not setup to sell Airtime."
+}
 
 ````
 #### Pinless Airtime LastResponse
@@ -419,5 +582,59 @@ The example request and response demonstrate a LastResponse Request call and res
 This example uses the following fields and values:
 
 ````javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Basic {{ base64string }}");//Replace with your base64 encoded string
+myHeaders.append("Content-Type", "application/json");
 
+var raw = JSON.stringify({
+  "clientSaleId": "1639111159"//Replace with the actual clientSaleId
+"outletId": "{{ outlet-Id }}" //Replace with the actual outletId
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-pinless/advice", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+````
+
+**Example Response**
+
+This example above makes a request for clientSaleId:1656881928 which for purposes of illustration had timed out, whilst the call had resulted in a successful sale.
+
+
+````javascript
+{
+      "code": "0",
+    	"transaction_reference": 467331585,
+    	"provider": "Mascom Pinless",
+    	"providerReference": "2607331585",
+    	"msisdn": "75636865",
+    	"amount": 10,
+    	"clientSaleId": "1656881928",
+    	"transactionDateTime": "2022-07-12T06:44:38.440Z",
+    	"response": "Successful",
+    	"transactionId": "RcgBZcAyiWHCGVJt5h38"
+}
+````
+
+This response would close off a successful last response payment.
+
+**Example Fault**
+
+````javascript
+{	
+"code": "209"
+"clientSaleId": "16391111599"
+"response: "Failure",
+"message": " Sale not found.",
+"description": " Sale not found."
+}
 ````
