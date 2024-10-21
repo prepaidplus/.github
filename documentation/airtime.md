@@ -63,9 +63,8 @@ The prepaid airtime credit request use case sequence diagram is illustrated belo
 
 
 
-## Prepaid Airtime
 
-####  Airtime Credit Request
+###  Airtime Credit Request Methods 
 
 The method returns a prepaid recharge voucher for the selected provider.
 
@@ -207,7 +206,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-voucher/cr
 ````
 <br>
 
-###  Airtime LastResponse
+###  Airtime LastResponse Methods
 
 This method is called subsequent to an ongoing Airtime Purchase Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the payment. In an event that the failed Airtime Purchase Request had resulted in a successful payment, the payment receipt is retrieved and returned for printing, otherwise the payment is abandoned.
 
