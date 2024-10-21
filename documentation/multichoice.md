@@ -11,7 +11,7 @@ PWS Multichoice DSTV use cases are used to describe the functionality exposed by
 
 You can download the Postman collection for this use case <a href="/assets/dstvPostmanCollectionPostmanCollection.json" download>here</a>. <!-- Replace with the actual path to your Postman collection file -->
 
-#### Use case actors, responsibilities and collaborators
+### Use case actors, responsibilities and collaborators
 
 Table  describes use case actors, their responsibilities and collaborators.
 
@@ -26,7 +26,7 @@ Table  describes use case actors, their responsibilities and collaborators.
 
 <br>
 
-### Multichoice DSTV Smartcard Confirmation Use Case
+## Multichoice DSTV Smartcard Confirmation Use Case
 
 #### Multichoice DSTV Smartcard Confirmation Description
 
@@ -73,7 +73,7 @@ The DSTV Smartcard Confirmation Vend use case sequence diagram is illustrated be
 
 <br>
 
-###  DSTV Confirm Smartcard
+###  DSTV Confirm Smartcard Methods
 
 The ConfirmSmartcard Request is used to verify that the following are in place before accepting payment towards smartcard linked DSTV:
 
@@ -216,7 +216,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/trialvend", r
 ````
 <br>
 
-### Multichoice DSTV Smartcard Payment Use Case
+## Multichoice DSTV Smartcard Payment Use Case
 
 #### DSTV Smartcard Payment Description
 
@@ -261,7 +261,7 @@ The DSTV Smartcard Payment use case sequence diagram is illustrated below.
 
 <br>
 
-### Subscription Payment
+### Subscription Payment Methods
 
 Carries out the actual payment based on the positive outcome of the ConfirmSmartcard. The method returns a payment confirmation receipt.
 
@@ -413,7 +413,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/creditvend", 
 
 <br>
 
-### Multichoice Last Response Use Case
+## Multichoice Last Response Use Case
 
 The Vendor aims to confirm the status of a potentially successful payment after a failed or incomplete Smartcard Payment Request. The PrepaidPlus server checks whether the transaction was processed, retrieves the payment receipt (if successful), and returns it for final confirmation or abandonment.
 
@@ -445,9 +445,10 @@ If no payment was processed, PrepaidPlus returns an error indicating that the tr
 #### Dstv Last Response Happy Path
 
 The request successfully returns payment confirmation, including the customer’s name, amount paid, and transaction details. The cashier prints the receipt and the transaction is closed.
+ 
+ <br>
 
-
-### Multichoice DSTV LastResponse
+### Multichoice DSTV LastResponse Methods
 
 This method is called subsequent to an ongoing Smartcard Payment Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the payment. In an event that the failed Smartcard Payment Request had resulted in a successful payment, the payment receipt is retrieved and returned for printing, otherwise the payment is abandoned.
 

@@ -92,11 +92,12 @@ The workflow for the Trial Credit Vend process is as presented below in Table . 
 | 4        | If the Merchant receives a successful response from PrepaidPlus, the customer names and purchase amount is then confirmed. NB: Merchant can now proceed with sale. |                                                                      
 <br>              |
 
-### 	Trial Credit Vend Happy Path 
+#### 	Trial Credit Vend Happy Path 
 
 The Trial Credit Vend use case sequence diagram is illustrated below.
 
 ![Credit Vend Happy Path](/assets/trialVendHappyPath.png)
+
 <br>
 
  ## TrialCreditVend Request
@@ -295,7 +296,7 @@ The Credit Vend use case sequence diagram is illustrated below.
 
 <br>
 
-##  CreditVend Request
+###  CreditVend Request
 
 The CreditVend request carries out the actual purchase based on the positive outcome of the TrialCreditVend or when used as a stand-alone. The method returns a prepaid electricity voucher.
 

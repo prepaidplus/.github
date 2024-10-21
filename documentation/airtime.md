@@ -24,25 +24,25 @@ The table describes use case actors, their responsibilities and collaborators.
 | PrepaidPlus Server | - Authenticates the Prepaid Airtime Server. <br> - Compiles and sends Prepaid Airtime request messages to the Prepaid Airtime server. <br> - Receives and formats Prepaid Airtime response messages from the Prepaid Airtime server. | - Prepaid Airtime Server |
 | Prepaid Airtime Server | - Authenticates the Prepaid Airtime clients. <br> - Complies with an appropriate Prepaid Airtime response message based on its application business logic. <br> - Responds with a fault response message, if required. | - Prepaid Airtime clients |
 
-###  Prepaid Airtime Credit Request Use Case
+##  Prepaid Airtime Credit Request Use Case
 
-#####  Prepaid Airtime Credit Request Description
+####  Prepaid Airtime Credit Request Description
 The Prepaid Airtime Credit Request use case is used to purchase a pin recharge of a defined amount for a specific mobile network operator.
 
-#####  Prepaid Airtime Credit Request Desired Outcome
+####  Prepaid Airtime Credit Request Desired Outcome
 The customer specifies the details of the pin recharge they require and pays for it (mobile network operator and amount).
 
-#####  Prepaid Airtime Credit Request Preconditions
+####  Prepaid Airtime Credit Request Preconditions
 - The mobile network operator shall be supplied.
 - The amount shall be supplied.
 
-#####  Prepaid Airtime Credit Request Participants
+####  Prepaid Airtime Credit Request Participants
 - The customer
 - The Vendor
 - PrepaidPlus Server
 - Prepaid Airtime server
 
-#####  Prepaid Airtime Credit Request Workflow
+####  Prepaid Airtime Credit Request Workflow
 The workflow for the prepaid airtime credit request process is as presented below.
 
 **Table: Prepaid Airtime Credit Request Workflow**
@@ -54,7 +54,7 @@ The workflow for the prepaid airtime credit request process is as presented belo
 | 3 | | The transaction is processed on the prepaid airtime server, and a prepaid airtime PIN recharge voucher is dispatched once the transaction is successfully processed. |
 | 4 | The merchant receives and delivers the prepaid airtime recharge voucher details to the customer. | |
 
-#####  Prepaid Airtime Credit Request Happy Path
+####  Prepaid Airtime Credit Request Happy Path
 The prepaid airtime credit request use case sequence diagram is illustrated below.
 
 **Fig: Prepaid Airtime Credit Request Happy Path**
@@ -63,7 +63,7 @@ The prepaid airtime credit request use case sequence diagram is illustrated belo
 
 
 
-### Prepaid Airtime
+## Prepaid Airtime
 
 ####  Airtime Credit Request
 
@@ -205,7 +205,9 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-voucher/cr
 }
 
 ````
-####  Airtime LastResponse
+<br>
+
+###  Airtime LastResponse
 
 This method is called subsequent to an ongoing Airtime Purchase Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the payment. In an event that the failed Airtime Purchase Request had resulted in a successful payment, the payment receipt is retrieved and returned for printing, otherwise the payment is abandoned.
 
@@ -331,7 +333,7 @@ This response would close off a successful last response payment.
 
 <br>
 
-### Prepaid Pinless Airtime Credit Request Use Case
+## Prepaid Pinless Airtime Credit Request Use Case
 
 #### Prepaid Pinless Airtime Credit Request Description
 The Prepaid Pinless Airtime Credit Request use case is used to purchase a direct recharge of a defined amount for a specific mobile network operator without the need for a PIN.
@@ -362,16 +364,15 @@ The workflow for the prepaid pinless airtime credit request process is as presen
 | 3 | | The transaction is processed on the prepaid airtime server, and a direct recharge is dispatched to the customer's mobile number once the transaction is successfully processed. |
 | 4 | The merchant confirms the successful recharge to the customer. | |
 
-##### Prepaid Pinless Airtime Credit Request Happy Path
+#### Prepaid Pinless Airtime Credit Request Happy Path
 The prepaid pinless airtime credit request use case sequence diagram is illustrated below.
 
 **Fig: Prepaid Pinless Airtime Credit Request Happy Path**
 
+<br>
 
 
-###  Prepaid Pinless Airtime Methods
-
-####  Pinless Airtime Credit Request
+###  Pinless Airtime Credit Request Methods
 
 The method automatically recharges a provided number. The service is available for Orange, beMobile, and Mascom.
 
@@ -506,14 +507,16 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-pinless/cr
 ````javascript
 {
 "code": "211"
-"clientSaleId": "16391111599"
+"clientSaleId": "1656881928"
 "response": "Failure",
 "message": " Airtime Vending Denied ",
 "description": "Merchant not setup to sell Airtime."
 }
 
 ````
-#### Pinless Airtime LastResponse
+<br>
+
+### Pinless Airtime LastResponse Methods
 
 This method is called subsequent to an ongoing Pinless Airtime Purchase Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the payment. In an event that the failed Pinless Airtime Purchase Request had resulted in a successful payment, the payment receipt is retrieved and returned for printing, otherwise the payment is abandoned.
 
