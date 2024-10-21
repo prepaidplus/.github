@@ -24,28 +24,38 @@ The table describes use case actors, their responsibilities and collaborators.
 | PrepaidPlus Server | - Authenticates the Prepaid Airtime Server. <br> - Compiles and sends Prepaid Airtime request messages to the Prepaid Airtime server. <br> - Receives and formats Prepaid Airtime response messages from the Prepaid Airtime server. | - Prepaid Airtime Server |
 | Prepaid Airtime Server | - Authenticates the Prepaid Airtime clients. <br> - Complies with an appropriate Prepaid Airtime response message based on its application business logic. <br> - Responds with a fault response message, if required. | - Prepaid Airtime clients |
 
-##  Prepaid Airtime Credit Request Use Case
+### Prepaid Airtime  Methods
+**Table: Supported Methods**
 
-####  Prepaid Airtime Credit Request Description
+| Operation                             | Description |
+|---------------------------------------|-------------|
+| Voucher Credit Request Methods        | Confirms the redemption of a voucher. It can be used to redeem a voucher by providing the voucher code and recipient details. The method returns a confirmation of the voucher redemption. |
+| Voucher LastResponse Methods          | This method is called subsequent to an ongoing Voucher Credit Request network timeout/connection failure or an exception. Its purpose is to check if a voucher redemption had been successfully made prior to abandoning the transaction. If the failed Voucher Credit Request had resulted in a successful redemption, the voucher details are retrieved and returned for confirmation, otherwise the redemption is abandoned. |
+| Pinless Airtime Credit Request Methods| Confirms the purchase of pinless airtime. It can be used to recharge an account by providing the recipient's phone number and payment details. The method returns a confirmation of the airtime purchase. |
+| Pinless Airtime LastResponse Methods  | This method is called subsequent to an ongoing Pinless Airtime Credit Request network timeout/connection failure or an exception. Its purpose is to check if an airtime purchase had been successfully made prior to abandoning the transaction. If the failed Pinless Airtime Credit Request had resulted in a successful purchase, the airtime details are retrieved and returned for confirmation, otherwise the purchase is abandoned. |
+
+##  Airtime Credit  Voucher Request Use Case
+
+####   Airtime Credit  Voucher  Request Description
 The Prepaid Airtime Credit Request use case is used to purchase a pin recharge of a defined amount for a specific mobile network operator.
 
-####  Prepaid Airtime Credit Request Desired Outcome
+####   Airtime Credit  Voucher  Request Desired Outcome
 The customer specifies the details of the pin recharge they require and pays for it (mobile network operator and amount).
 
-####  Prepaid Airtime Credit Request Preconditions
+####  Prepaid  Airtime Credit  Voucher Request Preconditions
 - The mobile network operator shall be supplied.
 - The amount shall be supplied.
 
-####  Prepaid Airtime Credit Request Participants
+####  Prepaid  Airtime Credit  Voucher Request Participants
 - The customer
 - The Vendor
 - PrepaidPlus Server
 - Prepaid Airtime server
 
-####  Prepaid Airtime Credit Request Workflow
+####  Prepaid  Airtime Credit  Voucher Request Workflow
 The workflow for the prepaid airtime credit request process is as presented below.
 
-**Table: Prepaid Airtime Credit Request Workflow**
+**Table: Prepaid  Airtime Credit  Voucher Request Workflow**
 
 | Step No | Client | PrepaidPlus Server |
 |---------|--------|--------------------|
@@ -54,21 +64,21 @@ The workflow for the prepaid airtime credit request process is as presented belo
 | 3 | | The transaction is processed on the prepaid airtime server, and a prepaid airtime PIN recharge voucher is dispatched once the transaction is successfully processed. |
 | 4 | The merchant receives and delivers the prepaid airtime recharge voucher details to the customer. | |
 
-####  Prepaid Airtime Credit Request Happy Path
+####  Prepaid  Airtime Credit  Voucher  Happy Path
 The prepaid airtime credit request use case sequence diagram is illustrated below.
 
-**Fig: Prepaid Airtime Credit Request Happy Path**
+**Fig: Prepaid Airtime Credit  Voucher  Happy Path**
 
 ![ Prepaid Airtime Path](/assets/airtimeCreditHappyPath.png)
 
 
 
 
-###  Airtime Credit Request Methods 
+###  Prepaid  Airtime Credit  Voucher Request Methods 
 
 The method returns a prepaid recharge voucher for the selected provider.
 
-**Send an Airtime Request**
+**Send an Airtime Credit  Voucher Request**
 
 Send an Airtime Credit request to one of the following endpoints:
 - **Production:** Will be advised once testing and integration on development server completed
@@ -76,7 +86,7 @@ Send an Airtime Credit request to one of the following endpoints:
 
 The AirtimeCreditVend Request requires the following fields:
 
-**Table: Airtime Credit Vend Request requirements**
+**Table: Airtime Credit  Voucher Vend Request requirements**
 
 | Argument         | Type   | Description                                                                                                      |
 |------------------|--------|------------------------------------------------------------------------------------------------------------------|
@@ -89,17 +99,17 @@ The AirtimeCreditVend Request requires the following fields:
 | provider         | string | **Mandatory:** This is the airtime provider. It’s a finite set Mascom, Orange, beMobile. Provider must be one of above with no padded empty characters. |
 | denomination     | int    | **Mandatory:** This is the airtime credit purchase amount. Refer to Table below for denominations on offer.      |
 
-**Table: Airtime Denominations – Testing Server**
+**Table: Airtime Credit  Voucher Denominations – Testing Server**
 
 | Provider | Denomination |
 |----------|--------------|
 | Orange   | 10           |
 
-**Making the AirtimeCredit Request**
+**Making theAirtime Credit  Voucher Request**
 
 The AirtimeCredit call is successful when you receive a response with an airtime credit voucher for the selected provider and denomination. If the call fails, you will receive one of the following errors:
 
-**Table : AirtimeCredit Request Errors**
+**Table : Airtime Credit  Voucher Request Errors**
 
 | Error No | Short Message            | Description                                                                 |
 |----------|--------------------------|-----------------------------------------------------------------------------|
@@ -122,9 +132,9 @@ The AirtimeCredit call is successful when you receive a response with an airtime
 
 The errors above are faults, which are fatal, call-level errors. When a fault occurs, nothing is processed because the entire call was invalid. Often the problem is that the API key was incorrect or there was a server error.
 
-**AirtimeCredit Response Parameters**
+**Airtime Credit  Voucher Response Parameters**
 
-**Table: AirtimeCredit Response**
+**Table: Airtime Credit  Voucher Response**
 
 | Argument             | Type   | Description                                                                                                      |
 |----------------------|--------|------------------------------------------------------------------------------------------------------------------|
@@ -139,7 +149,7 @@ The errors above are faults, which are fatal, call-level errors. When a fault oc
 | voucherSerialNumber  | string | **Mandatory:** Voucher serial number as supplied by Provider – not guaranteed to be unique                       |
 | voucherPinNumber     | string | Voucher Pin Number as supplied by Provider                                                                       |
 
-**AirtimeCredit Request Examples**
+**Airtime Credit  Voucher Request Examples**
 
 The example request and response demonstrate an Airtime Credit Request call and response. The example query demonstrates the use of the 'Authorization' header which uses Basic Authentication. The string passed is  (Base 64 encoded) APIkey as user and merchant password.
 
@@ -206,7 +216,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-voucher/cr
 ````
 <br>
 
-###  Airtime LastResponse Methods
+### Airtime Credit  Voucher Request LastResponse  Methods
 
 This method is called subsequent to an ongoing Airtime Purchase Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the payment. In an event that the failed Airtime Purchase Request had resulted in a successful payment, the payment receipt is retrieved and returned for printing, otherwise the payment is abandoned.
 
