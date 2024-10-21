@@ -100,7 +100,7 @@ The Trial Credit Vend use case sequence diagram is illustrated below.
 
 <br>
 
- ## TrialCreditVend Request
+ ### TrialCreditVend Request
 
 The TrialCreditVend Request is used to verify that the following are in place before generating an electricity token:
 - The meter number is valid and is the correct one the buyer intends to make purchase for, and also that the account has not been blocked.
@@ -521,7 +521,7 @@ The Last Response use case sequence diagram is illustrated in figure  below.
 
 <br>
 
-##  LastResponse Request
+###  LastResponse Request
 
 This method is called subsequent to an ongoing CreditVend Request network timeout/connection failure or an exception. Its purpose is to check if a voucher had been successfully sold prior to abandoning the sale. In an event that the failed CreditVend Request had resulted in a successful sale, the voucher is retrieved and returned for printing, otherwise the sale is abandoned.
 
@@ -578,7 +578,7 @@ The errors above are faults, which are fatal, call-level errors. When a fault oc
 | creditVendReceipt| element| **Mandatory:** This is the service providers receipt details for the transaction.                                |
 | clientSaleId     | string | **Mandatory:** This is the Merchant POS sale/transaction Id that uniquely identifies transaction.                |
 
-**Table 6.14: Credit Vend Receipt**
+**Table : Credit Vend Receipt**
 
 | Argument         | Type   | Description                                                                                                      |
 |------------------|--------|------------------------------------------------------------------------------------------------------------------|
