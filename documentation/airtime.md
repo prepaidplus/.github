@@ -11,7 +11,7 @@ PWS Prepaid Airtime use cases are used to describe the functionality exposed by 
 
 You can download the Postman collection for this use case <a href="/assets/airtimePostmanCollection.json" download>here</a>. <!-- Replace with the actual path to your Postman collection file -->
 
-####  Use case actors, responsibilities and collaborators
+###  Use case actors, responsibilities and collaborators
 
 The table describes use case actors, their responsibilities and collaborators.
 
