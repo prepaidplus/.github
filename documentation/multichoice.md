@@ -24,6 +24,15 @@ Table  describes use case actors, their responsibilities and collaborators.
 | PrepaidPlus Server | - Authenticates the Multichoice Payment Server. <br> - Compiles and sends MultiChoice DSTV request messages to Multichoice payment server. <br> - Receives and formats MultiChoice DSTV response messages from the Multichoice payment server. | - Multichoice DSTV Server |
 | Multichoice DSTV Payment Server | - Authenticates the MultiChoice DSTV clients. <br> - Complies with an appropriate MultiChoice DSTV response message based on its application business logic. <br> - Responds with a fault response message, if required. | - MultiChoice DSTV clients |
 
+### Prepaid Multichoice Methods
+**Table: Supported DSTV Methods**
+
+| Operation                | Description |
+|--------------------------|-------------|
+| SmartcardConfirmation Request | Verifies the smartcard number and confirms if it is valid and active. It also checks the subscription due date and amount. The SmartcardConfirmation returns the smartcard details, including the registered owner and amount due. |
+| CreditVend Request       | Confirms the purchase of a DSTV subscription. It can be used to recharge a DSTV account by providing the smartcard number and payment details. The method returns a confirmation of the subscription payment. |
+| LastResponse Request     | This method is called subsequent to an ongoing CreditVend Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the transaction. In an event that the failed CreditVend Request had resulted in a successful payment, the payment receipt is retrieved and returned for confirmation, otherwise the payment is abandoned. |
+
 <br>
 
 ## Multichoice DSTV Smartcard Confirmation Use Case
