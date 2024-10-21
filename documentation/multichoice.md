@@ -1,4 +1,4 @@
-## PWS MultiChoice DSTV Use Cases and Workflows
+# PWS MultiChoice DSTV Use Cases and Workflows
 
 PWS Multichoice DSTV use cases are used to describe the functionality exposed by the PWS Multichoice DSTV API. Each use case is aimed at complying with specific requirements of the following use case actors:
 

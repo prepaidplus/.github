@@ -1,4 +1,4 @@
-## PWS Prepaid Airtime Use Cases and Workflows
+# PWS Prepaid Airtime Use Cases and Workflows
 
 PWS Prepaid Airtime use cases are used to describe the functionality exposed by the Prepaid Airtime API. Each use case is aimed at complying with specific requirements of the following use case actors:
 
