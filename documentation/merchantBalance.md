@@ -45,6 +45,8 @@ Table describes use case actors, their responsibilities and collaborators:
 |------------------------|-------------|
 | GetMerchantBalance Request | Queries the merchant’s account balance at a point in time. The balance is updated every 60 seconds and includes the last deposit date and amount. |
 
+<br>
+
 ## Get Merchant Balance Use Case
 
 #### Get Merchant Balance Description
