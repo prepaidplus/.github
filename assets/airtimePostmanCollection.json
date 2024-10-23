@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "72f199d3-a171-4d3f-a6e4-27bb2f550a9f",
+		"name": "airtimePostmanCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38113484"
+	},
+	"item": [
+		{
+			"name": "artimePinlessCreditCreditRequest",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+												{
+							"key": "username",
+							"value": "{{ username }}", // Replace with your actual username
+							"type": "string"
+						}
+						{
+							"key": "password",
+							"value": "{{ password }}", // Replace with your actual password
+							"type": "string"
+						},
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"provider\": \"Orange Pinless\",\r\n    \"transactionAmount\": 10,\r\n    \"terminalId\": \"Web\",\r\n    \"clientSaleId\": \"123456\",\r\n    \"outletId\": \"52132733-01\",\r\n    \"operatorId\": \"52132733-01\",\r\n    \"outletName\":\"52132733-01\",\r\n    \"cellNumber\": \"72122330\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-pinless/creditvend",
+					"protocol": "https",
+					"host": [
+						"tps",
+						"prepaidplus",
+						"co",
+						"bw"
+					],
+					"path": [
+						"apimanager",
+						"rest",
+						"basic",
+						"v1",
+						"airtime-pinless",
+						"creditvend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "airtimePinlessLastTransaction",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{ username }}", // Replace with your actual username
+							"type": "string"
+						}
+						{
+							"key": "password",
+							"value": "{{ password }}", // Replace with your actual password
+							"type": "string"
+						},
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientSaleId\": \"123456\",\r\n    \"outletId\": \"52132733-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-pinless/advice",
+					"protocol": "https",
+					"host": [
+						"tps",
+						"prepaidplus",
+						"co",
+						"bw"
+					],
+					"path": [
+						"apimanager",
+						"rest",
+						"basic",
+						"v1",
+						"airtime-pinless",
+						"advice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "airtimeCreditRequest",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{ username }}", // Replace with your actual username
+							"type": "string"
+						}
+						{
+							"key": "password",
+							"value": "{{ password }}", // Replace with your actual password
+							"type": "string"
+						},
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"provider\": \"Orange\",\r\n    \"denomination\": 60,\r\n    \"terminalId\": \"Web\",\r\n    \"clientSaleId\": \"123456\",\r\n    \"outletId\": \"52132733-01\",\r\n    \"operatorId\": \"52132733-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-voucher/creditvend",
+					"protocol": "https",
+					"host": [
+						"tps",
+						"prepaidplus",
+						"co",
+						"bw"
+					],
+					"path": [
+						"apimanager",
+						"rest",
+						"basic",
+						"v1",
+						"airtime-voucher",
+						"creditvend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "airtimeLastResponse",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{ username }}", // Replace with your actual username
+							"type": "string"
+						}
+						{
+							"key": "password",
+							"value": "{{ password }}", // Replace with your actual password
+							"type": "string"
+						},
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientSaleId\": \"123456\",\r\n    \"outletId\": \"52132733-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-voucher/advice",
+					"protocol": "https",
+					"host": [
+						"tps",
+						"prepaidplus",
+						"co",
+						"bw"
+					],
+					"path": [
+						"apimanager",
+						"rest",
+						"basic",
+						"v1",
+						"airtime-voucher",
+						"advice"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
