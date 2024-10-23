@@ -13,13 +13,13 @@
 					"type": "basic",
 					"basic": [
 						{
-							"key": "username",
-							"value": "",
+							"key":"username", 
+							"value":"{{ username }}", // Replace with your actual username
 							"type": "string"
 						},
 						{
 							"key": "password",
-							"value": "0000",
+							"value": "{{ password }}", // Replace with your actual password
 							"type": "string"
 						}
 					]
@@ -36,7 +36,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://api.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialvend",
+					"raw": "https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/trialvend",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -64,12 +64,12 @@
 					"basic": [
 						{
 							"key": "username",
-							"value": "H6F3eanmT11WL2lFWZbG",
+							"value": "{{ username }}", // Replace with your actual username
 							"type": "string"
 						},
 						{
 							"key": "password",
-							"value": "0000",
+							"value": "{{ password }}", // Replace with your actual password
 							"type": "string"
 						}
 					]
@@ -86,7 +86,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://api.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/creditvend",
+					"raw": "https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/creditvend",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -114,12 +114,12 @@
 					"basic": [
 						{
 							"key": "username",
-							"value": "H6F3eanmT11WL2lFWZbG",
+							"value": "{{ username }}", // Replace with your actual username
 							"type": "string"
 						},
 						{
 							"key": "password",
-							"value": "0000",
+							"value":"{{ password }}", // Replace with your actual password
 							"type": "string"
 						}
 					]
