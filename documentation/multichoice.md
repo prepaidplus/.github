@@ -1,4 +1,4 @@
-## PWS MultiChoice DSTV Use Cases and Workflows
+# PWS MultiChoice DSTV Use Cases and Workflows
 
 PWS Multichoice DSTV use cases are used to describe the functionality exposed by the PWS Multichoice DSTV API. Each use case is aimed at complying with specific requirements of the following use case actors:
 
@@ -11,7 +11,7 @@ PWS Multichoice DSTV use cases are used to describe the functionality exposed by
 
 You can download the Postman collection for this use case <a href="/assets/dstvPostmanCollectionPostmanCollection.json" download>here</a>. <!-- Replace with the actual path to your Postman collection file -->
 
-#### Use case actors, responsibilities and collaborators
+### Use case actors, responsibilities and collaborators
 
 Table  describes use case actors, their responsibilities and collaborators.
 
@@ -24,9 +24,17 @@ Table  describes use case actors, their responsibilities and collaborators.
 | PrepaidPlus Server | - Authenticates the Multichoice Payment Server. <br> - Compiles and sends MultiChoice DSTV request messages to Multichoice payment server. <br> - Receives and formats MultiChoice DSTV response messages from the Multichoice payment server. | - Multichoice DSTV Server |
 | Multichoice DSTV Payment Server | - Authenticates the MultiChoice DSTV clients. <br> - Complies with an appropriate MultiChoice DSTV response message based on its application business logic. <br> - Responds with a fault response message, if required. | - MultiChoice DSTV clients |
 
-<br>
+### DSTV Methods
+**Table: Supported DSTV Methods**
 
-### Multichoice DSTV Smartcard Confirmation Use Case
+| Operation                             | Description |
+|---------------------------------------|-------------|
+| DSTV Confirm Smartcard Methods        | Verifies the smartcard number and confirms if it is valid and active. It also checks the subscription due date and amount. The method returns the smartcard details, including the registered owner and amount due. |
+| Subscription Payment Methods          | Confirms the purchase of a DSTV subscription. It can be used to recharge a DSTV account by providing the smartcard number and payment details. The method returns a confirmation of the subscription payment. |
+| Multichoice DSTV LastResponse Methods | This method is called subsequent to an ongoing Subscription Payment Methods network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the transaction. If the failed Subscription Payment Methods had resulted in a successful payment, the payment receipt is retrieved and returned for confirmation, otherwise the payment is abandoned. |
+
+
+## Multichoice DSTV Smartcard Confirmation Use Case
 
 #### Multichoice DSTV Smartcard Confirmation Description
 
@@ -73,7 +81,7 @@ The DSTV Smartcard Confirmation Vend use case sequence diagram is illustrated be
 
 <br>
 
-###  DSTV Confirm Smartcard
+###  DSTV Confirm Smartcard Methods
 
 The ConfirmSmartcard Request is used to verify that the following are in place before accepting payment towards smartcard linked DSTV:
 
@@ -216,7 +224,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/trialvend", r
 ````
 <br>
 
-### Multichoice DSTV Smartcard Payment Use Case
+## Multichoice DSTV Smartcard Payment Use Case
 
 #### DSTV Smartcard Payment Description
 
@@ -251,7 +259,7 @@ The workflow for the DSTV Smartcard Payment process is as presented below.
 | 3 | | PrepaidPlus sends the customer payment details with a reference number from Multichoice DSTV to  POS. |
 | 4 | POS prints the payment receipt details. | |
 
-<br>
+
 
 The DSTV Smartcard Payment use case sequence diagram is illustrated below.
 
@@ -261,7 +269,7 @@ The DSTV Smartcard Payment use case sequence diagram is illustrated below.
 
 <br>
 
-### Subscription Payment
+### Subscription Payment Methods
 
 Carries out the actual payment based on the positive outcome of the ConfirmSmartcard. The method returns a payment confirmation receipt.
 
@@ -388,7 +396,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/creditvend", 
     "DStv HD Compact Plus Bouquet IS20"
     ],
     "transactionId": "8aTRULd0Z215tHw8ybKR",
-    "clientSaleId": "1639103549",
+    "clientSaleId": "1659008565",
     "response": "Successful",
     "provider": "MultiChoice Botswana",
     "transactionDateTime": "2021-12-10T02:32:41.089Z",
@@ -404,7 +412,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/creditvend", 
    "response": "Failure",
    "description": "An unexpected exception has occurred..",
    "transactionId": null,
-   "clientSaleId": "1639103549",
+   "clientSaleId": "1659008565",
    "smartcardNumber": "1234567890",
    "amount": 100,
    "status": 500
@@ -413,7 +421,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/creditvend", 
 
 <br>
 
-### Multichoice Last Response Use Case
+## Multichoice Last Response Use Case
 
 The Vendor aims to confirm the status of a potentially successful payment after a failed or incomplete Smartcard Payment Request. The PrepaidPlus server checks whether the transaction was processed, retrieves the payment receipt (if successful), and returns it for final confirmation or abandonment.
 
@@ -447,7 +455,7 @@ If no payment was processed, PrepaidPlus returns an error indicating that the tr
 The request successfully returns payment confirmation, including the customer’s name, amount paid, and transaction details. The cashier prints the receipt and the transaction is closed.
 
 
-### Multichoice DSTV LastResponse
+### Multichoice DSTV LastResponse Methods
 
 This method is called subsequent to an ongoing Smartcard Payment Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the payment. In an event that the failed Smartcard Payment Request had resulted in a successful payment, the payment receipt is retrieved and returned for printing, otherwise the payment is abandoned.
 
@@ -539,7 +547,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/advice", requ
 
 **Example Response**
 
-This example above makes a request for clientSaleId:12349876 which for purposes of illustration had timed out, whilst the call had resulted in a successful sale.
+This example above makes a request for clientSaleId:1639111159 which for purposes of illustration had timed out, whilst the call had resulted in a successful sale.
 
 ````javascript
 {
@@ -566,7 +574,7 @@ This response would close off a successful last response payment.
 ````javascript
 { 
 "code": "209"
-"clientSaleId": "16391111599"
+"clientSaleId": "1639111159"
 "response: "Failure",
 "message": " Sale not found.",
 "description": " Sale not found."
