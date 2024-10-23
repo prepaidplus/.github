@@ -197,7 +197,7 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/dstv/trialvend", r
 ````javascript
 {
     "code": "0",
-    "clientSaleId": "1639066584",
+    "clientSaleId": "1234567890",
     "transactionAmount": 100,
     "customerName": "JE Smith",
     "smartCard": "1234567890",
