@@ -14,12 +14,11 @@
 					"basic": [
 						{
 							"key": "password",
-							"value":"{{ password }}", // Replace with your actual password
+							"value":"{{ password }}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value":"{{ username }}", // Replace with your actual username
 							"type": "string"
 						}
 					]
@@ -64,12 +63,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{ password }}", // Replace with your actual password
+							"value": "{{ password }}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{ username }}", // Replace with your actual username
+							"value": "{{ base64string }}", 
 							"type": "string"
 						}
 					]
@@ -114,12 +113,12 @@
 					"basic": [
 						{
 							"key": "username",
-							"value": "{{apiKey}}",// Replace with your actual apikey
+							"value": "{{apiKey}}",
 							"type": "string"
 						},
 						{
 							"key": "password",
-							"value": "{{ password }}", // Replace with your actual password
+							"value": "{{ password }}",
 							"type": "string"
 						}
 					]
