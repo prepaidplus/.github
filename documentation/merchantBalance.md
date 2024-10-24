@@ -45,6 +45,8 @@ Table describes use case actors, their responsibilities and collaborators:
 |------------------------|-------------|
 | GetMerchantBalance Request | Queries the merchant’s account balance at a point in time. The balance is updated every 60 seconds and includes the last deposit date and amount. |
 
+<br>
+
 ## Get Merchant Balance Use Case
 
 #### Get Merchant Balance Description
@@ -82,9 +84,7 @@ The workflow for the Get Merchant Balance process is as presented below in Table
 | 3        |                                                                        | PrepaidPlus validates the merchant API key. If valid, the transaction proceeds to subsequent steps, or else returns an API error. PrepaidPlus sends a request to the Merchant Balance server. |
 | 4        | If the Merchant receives a successful response from PrepaidPlus, the balance information is then confirmed and provided to the customer. |                                                                      
 
-#### Get Merchant Balance Happy Path 
 
-The Get Merchant Balance use case sequence diagram is illustrated below.
 
 <br>
 
