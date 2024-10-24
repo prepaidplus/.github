@@ -34,6 +34,8 @@ The table describes use case actors, their responsibilities and collaborators.
 | Pinless Airtime Credit Request Methods| Confirms the purchase of pinless airtime. It can be used to recharge an account by providing the recipient's phone number and payment details. The method returns a confirmation of the airtime purchase. |
 | Pinless Airtime LastResponse Methods  | This method is called subsequent to an ongoing Pinless Airtime Credit Request network timeout/connection failure or an exception. Its purpose is to check if an airtime purchase had been successfully made prior to abandoning the transaction. If the failed Pinless Airtime Credit Request had resulted in a successful purchase, the airtime details are retrieved and returned for confirmation, otherwise the purchase is abandoned. |
 
+<br>
+
 ##  Airtime Credit  Voucher Request Use Case
 
 ####   Airtime Credit  Voucher  Request Description
@@ -67,7 +69,7 @@ The workflow for the prepaid airtime credit request process is as presented belo
 ####  Prepaid  Airtime Credit  Voucher  Happy Path
 The prepaid airtime credit request use case sequence diagram is illustrated below.
 
-**Fig: Prepaid Airtime Credit  Voucher  Happy Path**
+
 
 ![ Prepaid Airtime Path](/assets/airtimeCreditHappyPath.png)
 
@@ -373,10 +375,7 @@ The workflow for the prepaid pinless airtime credit request process is as presen
 | 3 | | The transaction is processed on the prepaid airtime server, and a direct recharge is dispatched to the customer's mobile number once the transaction is successfully processed. |
 | 4 | The merchant confirms the successful recharge to the customer. | |
 
-#### Prepaid Pinless Airtime Credit Request Happy Path
-The prepaid pinless airtime credit request use case sequence diagram is illustrated below.
 
-**Fig: Prepaid Pinless Airtime Credit Request Happy Path**
 
 <br>
 
@@ -523,6 +522,37 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-pinless/cr
 }
 
 ````
+<br>
+
+
+## Pinless Airtime Last Response Use Case
+
+#### Pinless Airtime Last Response Description
+The Pinless Airtime Last Response use case is used to verify the status of a Pinless Airtime Purchase Request that encountered a network timeout, connection failure, or an exception. This ensures that the payment status is confirmed before abandoning the transaction.
+
+#### Pinless Airtime Last Response Desired Outcome
+The system verifies if the payment was successfully made and retrieves the receipt for printing if successful. If the payment was not processed, the transaction is abandoned.
+
+#### Pinless Airtime Last Response Preconditions
+- The merchant has the necessary API credentials (API key and password).
+- A Pinless Airtime Purchase Request has been made and encountered a failure.
+
+#### Pinless Airtime Last Response Participants
+- The Merchant
+- PrepaidPlus Server
+- Prepaid Airtime Server
+
+**Pinless Airtime Last Response Workflow**
+The workflow for the Pinless Airtime Last Response process is as presented below.
+
+| Step No | Client  | PrepaidPlus Server  |
+|---------|---------|---------------------|
+| 1       | The merchant initiates a LastResponse request to verify the status of a failed Pinless Airtime Purchase Request. | |
+| 2       |         | PrepaidPlus receives the LastResponse request and validates the merchant API Key and credentials. |
+| 3       |         | PrepaidPlus checks the status of the payment on the prepaid airtime server. |
+| 4       |         | If the payment was successful, PrepaidPlus retrieves the receipt and returns it to the merchant. If the payment was not processed, an error message is returned. |
+| 5       | The merchant confirms the status to the customer and prints the receipt if the payment was successful. | 
+
 <br>
 
 ### Pinless Airtime LastResponse Methods
