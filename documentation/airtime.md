@@ -218,6 +218,38 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/airtime-voucher/cr
 ````
 <br>
 
+## Airtime Credit Voucher Request LastResponse Use Case
+
+#### Airtime Credit Voucher Request LastResponse Description
+This method is called subsequent to an ongoing Airtime Purchase Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the payment. In the event that the failed Airtime Purchase Request resulted in a successful payment, the payment receipt is retrieved and returned for printing; otherwise, the payment is abandoned.
+
+#### Airtime Credit Voucher Request LastResponse Desired Outcome
+The system verifies if the payment was successfully made and retrieves the receipt for printing if successful. If the payment was not processed, the transaction is abandoned.
+
+#### Airtime Credit Voucher Request LastResponse Preconditions
+- The merchant has the necessary API credentials (API key and password).
+- A Pinless Airtime Purchase Request has been made and encountered a failure.
+
+#### Airtime Credit Voucher Request LastResponse Participants
+- The Merchant
+- PrepaidPlus Server
+- Prepaid Airtime Server
+
+#### Airtime Credit Voucher Request LastResponse Workflow
+The workflow for the Airtime Credit Voucher Request LastResponse process is as presented below.
+
+#### Table: Airtime Credit Voucher Request LastResponse Workflow
+
+| **Step No** | **Client** | **PrepaidPlus Server** |
+|-------------|------------|------------------------|
+| **1**       | The merchant initiates a LastResponse request to verify the status of a failed Airtime Purchase Request. |                        |
+| **2**       |            | PrepaidPlus receives the LastResponse request and validates the merchant API Key and credentials. |
+| **3**       |            | PrepaidPlus checks the status of the payment on the prepaid airtime server. |
+| **4**       |            | If the payment was successful, PrepaidPlus retrieves the receipt and returns it to the merchant. If the payment was not processed, an error message is returned. |
+| **5**       | The merchant confirms the status to the customer and prints the receipt if the payment was successful. |                        |
+
+<br>
+
 ### Airtime Credit  Voucher Request LastResponse  Methods
 
 This method is called subsequent to an ongoing Airtime Purchase Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the payment. In an event that the failed Airtime Purchase Request had resulted in a successful payment, the payment receipt is retrieved and returned for printing, otherwise the payment is abandoned.
