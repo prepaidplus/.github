@@ -542,7 +542,8 @@ The system verifies if the payment was successfully made and retrieves the recei
 - PrepaidPlus Server
 - Prepaid Airtime Server
 
-**Pinless Airtime Last Response Workflow**
+#### Pinless Airtime Last Response Workflow 
+
 The workflow for the Pinless Airtime Last Response process is as presented below.
 
 | Step No | Client  | PrepaidPlus Server  |
