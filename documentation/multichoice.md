@@ -9,7 +9,7 @@ PWS Multichoice DSTV use cases are used to describe the functionality exposed by
 
 #### Download Postman Collection
 
-You can download the Postman collection for this use case <a href="/assets/dstvPostmanCollectionPostmanCollection.json" download>here</a>. <!-- Replace with the actual path to your Postman collection file -->
+You can download the Postman collection for this use case <a href="/assets/dstvPostmanCollection.json" download>here</a>. <!-- Replace with the actual path to your Postman collection file -->
 
 ### Use case actors, responsibilities and collaborators
 
@@ -33,6 +33,7 @@ Table  describes use case actors, their responsibilities and collaborators.
 | Subscription Payment Methods          | Confirms the purchase of a DSTV subscription. It can be used to recharge a DSTV account by providing the smartcard number and payment details. The method returns a confirmation of the subscription payment. |
 | Multichoice DSTV LastResponse Methods | This method is called subsequent to an ongoing Subscription Payment Methods network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the transaction. If the failed Subscription Payment Methods had resulted in a successful payment, the payment receipt is retrieved and returned for confirmation, otherwise the payment is abandoned. |
 
+<br>
 
 ## Multichoice DSTV Smartcard Confirmation Use Case
 
@@ -450,10 +451,8 @@ The PrepaidPlus server validates the API key and checks for the transaction’s 
 If a successful payment is found, PrepaidPlus returns the payment confirmation details.
 If no payment was processed, PrepaidPlus returns an error indicating that the transaction could not be found.
 
-#### Dstv Last Response Happy Path
 
-The request successfully returns payment confirmation, including the customer’s name, amount paid, and transaction details. The cashier prints the receipt and the transaction is closed.
-
+ <br>
 
 ### Multichoice DSTV LastResponse Methods
 

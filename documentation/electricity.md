@@ -51,6 +51,7 @@ Table  describes use case actors, their responsibilities and collaborators:
 | CreditVend Request      | Confirms purchase of a prepaid electricity voucher. It can be used in concert with the positive outcome of the TrialCreditVend or on its own. The method returns a prepaid electricity voucher. |
 | LastResponse Request    | This method is called subsequent to an ongoing CreditVend Request network timeout/connection failure or an exception. Its purpose is to check if a voucher had been successfully sold prior to abandoning the sale. In an event that the failed CreditVend Request had resulted in a successful sale the voucher is retrieved and returned for printing, otherwise the sale is abandoned. |
 
+<br>
 
 ## Trial Credit Vend Use Case
 
