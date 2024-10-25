@@ -14,7 +14,7 @@
 					"basic": [
 												{
 							"key": "username",
-							"value": "{{ base64string }}", 
+							"value": "{{ api_key }}", 
 							"type": "string"
 						}
 						{
@@ -64,7 +64,7 @@
 					"basic": [
 						{
 							"key": "username",
-							"value": "{{ base64string }}",
+							"value": "{{ api_key }}",
 							"type": "string"
 						}
 						{
@@ -114,7 +114,7 @@
 					"basic": [
 						{
 							"key": "username",
-							"value": "{{ base64string }}",
+							"value": "{{ api_key }}",
 							"type": "string"
 						}
 						{
@@ -164,7 +164,7 @@
 					"basic": [
 						{
 							"key": "username",
-							"value": "{{ base64string }}",
+							"value": "{{ api_key }}",
 							"type": "string"
 						}
 						{
