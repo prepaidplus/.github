@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "64c840d2-a00a-41db-a42b-4e1288f04cb8",
+		"name": "merchantBalance",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38113484"
+	},
+	"item": [
+		{
+			"name": "merchantBalance",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{ api_key }}", 
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value":"{{ password }}", 
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://34.149.40.40/apimanager/rest/basic/v1/merchant/getbalance",
+					"protocol": "https",
+					"host": [
+						"34",
+						"149",
+						"40",
+						"40"
+					],
+					"path": [
+						"apimanager",
+						"rest",
+						"basic",
+						"v1",
+						"merchant",
+						"getbalance"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
