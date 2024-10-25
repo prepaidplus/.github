@@ -250,6 +250,7 @@ The workflow for the Airtime Credit Voucher Request LastResponse process is as p
 
 <br>
 
+
 ### Airtime Credit  Voucher Request LastResponse  Methods
 
 This method is called subsequent to an ongoing Airtime Purchase Request network timeout/connection failure or an exception. Its purpose is to check if a payment had been successfully made prior to abandoning the payment. In an event that the failed Airtime Purchase Request had resulted in a successful payment, the payment receipt is retrieved and returned for printing, otherwise the payment is abandoned.
