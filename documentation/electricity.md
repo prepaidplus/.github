@@ -1,6 +1,6 @@
 
 
-## PWS Prepaid Electricity Use Cases and Workflows
+# PWS Prepaid Electricity Use Cases and Workflows
 
 The Use Case and workflow are presented for each task. A use case is defined as a single task, performed by the end user of the system, which has some useful outcome to the end user.
 
@@ -51,6 +51,7 @@ Table  describes use case actors, their responsibilities and collaborators:
 | CreditVend Request      | Confirms purchase of a prepaid electricity voucher. It can be used in concert with the positive outcome of the TrialCreditVend or on its own. The method returns a prepaid electricity voucher. |
 | LastResponse Request    | This method is called subsequent to an ongoing CreditVend Request network timeout/connection failure or an exception. Its purpose is to check if a voucher had been successfully sold prior to abandoning the sale. In an event that the failed CreditVend Request had resulted in a successful sale the voucher is retrieved and returned for printing, otherwise the sale is abandoned. |
 
+<br>
 
 ## Trial Credit Vend Use Case
 
@@ -89,17 +90,17 @@ The workflow for the Trial Credit Vend process is as presented below in Table . 
 | 1        | Customer will submit a valid and complete prepaid electricity purchase request. A complete and valid request includes the meter number and the amount of electricity required in Pula (i.e. no Thebe, with minimum amount of P1). |                                                                                    |
 | 2        | The Merchant (Vending Client) then makes a valid and complete API call for prepaid electricity purchase. This call should also provide the API key of the merchant for authentication. The merchant must provide the following in addition to the information provided by the customer; TerminalID, OperatorId and ClientSaleID (The ClientSale ID uniquely identifies the transaction both on vending client and PWS). |                                                                                    |
 | 3        |                                                                        | PrepaidPlus validates the merchant API key. If valid, the transaction proceeds to subsequent steps, or else returns an API error. PrepaidPlus validates the meter number (i.e. does it fall in the format of the service provider’s meter numbers). If the meter number fails the validation, an error message is returned. PrepaidPlus also checks that the sale meets the minimum amount allowed for prepaid electricity. If the sale amount is below the permitted minimum amount, an error message is returned. PrepaidPlus checks the available balance in the Merchant account (i.e. within PrepaidPlus system) to ensure there is sufficient balance to meet the amount requested for purchase. If the balance is insufficient, an error message is returned. If all the checks above are positive, PrepaidPlus sends a request to the service provider with the customer meter number and amount. |
-| 4        | If the Merchant receives a successful response from PrepaidPlus, the customer names and purchase amount is then confirmed. NB: Merchant can now proceed with sale. |                                                                      
-<br>              |
+| 4        | If the Merchant receives a successful response from PrepaidPlus, the customer names and purchase amount is then confirmed. NB: Merchant can now proceed with sale. |                                                                                    |
 
-### 	Trial Credit Vend Happy Path 
+#### 	Trial Credit Vend Happy Path 
 
 The Trial Credit Vend use case sequence diagram is illustrated below.
 
 ![Credit Vend Happy Path](/assets/trialVendHappyPath.png)
+
 <br>
 
- ## TrialCreditVend Request
+ ### TrialCreditVend Request Methods
 
 The TrialCreditVend Request is used to verify that the following are in place before generating an electricity token:
 - The meter number is valid and is the correct one the buyer intends to make purchase for, and also that the account has not been blocked.
@@ -295,7 +296,7 @@ The Credit Vend use case sequence diagram is illustrated below.
 
 <br>
 
-##  CreditVend Request
+###  CreditVend Request Method
 
 The CreditVend request carries out the actual purchase based on the positive outcome of the TrialCreditVend or when used as a stand-alone. The method returns a prepaid electricity voucher.
 
@@ -498,7 +499,7 @@ Last Response request messages should be issued when the vendor has experienced 
 - PrepaidPlus Server
 
 ####  Last Response Workflow
-The workflow for the Last Response process is as presented below in Table 3.4.
+The workflow for the Last Response process is as presented below in Table .
 
 **Table : Last Response Workflow**
 
@@ -509,7 +510,8 @@ The workflow for the Last Response process is as presented below in Table 3.4.
 | 3 | | PrepaidPlus receives the credit token from the prepaid electricity service provider, and sends it to the Vendor, or PrepaidPlus receives the exception message from the prepaid electricity service provider and sends it to the Vendor. |
 | 4 | The vendor prints out the Credit Vend customer receipt and hands it over to the customer. If the Credit Vend had not been successful, then the vendor prints out the exception message and continues to vend. | |
 | 5 | NB: Both PrepaidPlus and the Merchant systems keep their own data for each sale for cross-checking and cross-referencing. | |
-<br>
+
+
 
 ####  Last Response Happy Path
 The Last Response use case sequence diagram is illustrated in figure  below.
@@ -520,7 +522,7 @@ The Last Response use case sequence diagram is illustrated in figure  below.
 
 <br>
 
-##  LastResponse Request
+###  LastResponse Request Method
 
 This method is called subsequent to an ongoing CreditVend Request network timeout/connection failure or an exception. Its purpose is to check if a voucher had been successfully sold prior to abandoning the sale. In an event that the failed CreditVend Request had resulted in a successful sale, the voucher is retrieved and returned for printing, otherwise the sale is abandoned.
 
@@ -577,7 +579,7 @@ The errors above are faults, which are fatal, call-level errors. When a fault oc
 | creditVendReceipt| element| **Mandatory:** This is the service providers receipt details for the transaction.                                |
 | clientSaleId     | string | **Mandatory:** This is the Merchant POS sale/transaction Id that uniquely identifies transaction.                |
 
-**Table 6.14: Credit Vend Receipt**
+**Table : Credit Vend Receipt**
 
 | Argument         | Type   | Description                                                                                                      |
 |------------------|--------|------------------------------------------------------------------------------------------------------------------|
@@ -637,8 +639,8 @@ fetch("https://tps.prepaidplus.co.bw/apimanager/rest/basic/v1/electricity/advice
 **Response**
 ```javascript
 {
-    "code": "0",
-    "creditVendReceipt": {
+      "code": "0",
+       "creditVendReceipt": {
         "clientId": "PP000", 
         "account": "{{ account }}", 
         "location": "52387", 
